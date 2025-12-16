@@ -1,283 +1,298 @@
 # 🇰🇷 Korean Voice Bot System (Handover Repository)
 
-This repository contains a **production-grade Korean voice bot system** built around **Amazon Connect + Lex V2 (ko_KR) + AWS Lambda**, with multiple **Text-to-Speech (TTS)** backends and a **local web interface** for testing and orchestration.
-
-This README is written for **handover purposes**. Some experimental or deprecated components (e.g. OpenVoice) have been **moved into deeper folders or archives** and are **not required for day-to-day operation**.
-
----
-
-## 1. System Purpose
-
-This repository contains a **production-grade Korean voice bot system** built around **Amazon Connect + Lex V2 (ko_KR) + AWS Lambda**, with optional **SIP-based calling via FreeSWITCH** for advanced telephony integration.
-
-The system has evolved over time; this README **keeps the original structure and intent**, while removing redundancy and clearly separating **active components** from **archived or experimental ones**.
-
-The system supports:
-
-- Automated **outbound phone calls** via Amazon Connect
-- Korean **speech recognition and intent handling** via Lex V2 (ko_KR)
-- Multiple **TTS engines** (FishSpeech, ElevenLabs, GPT Voice)
-- **Caching and batching** of synthesized speech for low-latency playback
-- A **local web UI** for testing calls, TTS, and chatbots
-
-All AWS resources are deployed in **ap-northeast-2 (Seoul)** unless stated otherwise.
+> **Status:** Production / Handover-ready
+> **Languages:** English & Korean (below)
+> **Scope:** Code & configuration only (no datasets, no model weights, no secrets)
 
 ---
 
-## 2. High-Level Architecture
+## ENGLISH VERSION
 
-### 2.1 Amazon Connect / AWS Path (Primary)
+### 1. Overview
+
+This repository contains a **production-grade Korean voice bot system** built around **Amazon Connect + Lex V2 (ko_KR) + AWS Lambda**, with support for **multiple TTS backends** and an **optional SIP-based calling path via FreeSWITCH**.
+
+The repository is prepared specifically for **handover and long-term maintenance**. Historical experiments, backups, and reference implementations are preserved, but clearly separated from active runtime components.
+
+---
+
+### 2. System Capabilities
+
+* Automated **outbound phone calls** via Amazon Connect
+* Korean **speech recognition and intent handling** using Lex V2 (ko_KR)
+* Multiple **Text-to-Speech (TTS)** engines
+
+  * FishSpeech (primary)
+  * ElevenLabs (optional)
+  * GPT Voice (experimental)
+* **Low-latency audio playback** using batching and caching
+* **Local web UI** for testing and orchestration
+* **SIP / FreeSWITCH integration** for non-AWS telephony environments
+
+All AWS resources are deployed in **ap-northeast-2 (Seoul)** unless otherwise noted.
+
+---
+
+### 3. High-Level Architecture
+
+#### 3.1 Amazon Connect Path (Primary)
 
 ```
 Caller → Amazon Connect
    → Lex V2 (ko_KR)
-      → Lambda (dialog / fulfillment)
-         → TTS (FishSpeech / ElevenLabs / GPT)
-         → S3 (audio storage)
-         → DynamoDB (utterance cache)
+      → AWS Lambda
+         → TTS Engine
+         → S3 (Audio Storage)
+         → DynamoDB (Utterance Cache)
 ```
 
-Playback is handled in **batched streaming mode**, allowing long responses to be delivered smoothly inside Connect contact flows.
+This is the main production path. Audio responses are generated in batches and streamed for smooth playback.
 
----
-
-### 2.2 SIP / FreeSWITCH Path (Optional)
+#### 3.2 SIP / FreeSWITCH Path (Optional)
 
 ```
 SIP Client / PSTN
    → FreeSWITCH
-      → SIP App / HTTP bridge
-         → TTS backend
-         → Audio streaming / playback
+      → sip_app.py / HTTP Bridge
+         → TTS Engine
+         → Audio Streaming
 ```
 
-The FreeSWITCH path was introduced later to support **SIP-based calling**, testing outside Amazon Connect, and future extensibility toward non-AWS telephony environments.
-
-```
-Caller → Amazon Connect
-   → Lex V2 (ko_KR)
-      → Lambda (dialog / fulfillment)
-         → TTS (FishSpeech / ElevenLabs / GPT)
-         → S3 (audio storage)
-         → DynamoDB (utterance cache)
-```
-
-Playback is handled in **batched streaming mode**, allowing long responses to be delivered smoothly inside Connect contact flows.
+This path enables SIP-based calling for testing, on-premise setups, or non-AWS deployments.
 
 ---
 
-## 3. Recommended Entry Points (Important)
+### 4. Primary Entry Points
 
-To stay consistent with the original README intent, the system can be approached from **three main entry points**, depending on use case:
+#### 🔴 Local Web Interface (Recommended)
 
-For handover and maintenance, **only the following entry points are critical**:
+* **File:** `local_app.py`
+* **Purpose:**
 
-### 🔴 Local Web Interface (Primary)
-- **File:** `local_app.py`
-- **Purpose:** Unified UI for
-  - Outbound phone calls (Connect / SIP)
-  - TTS generation
-  - Chatbot testing
+  * Test outbound calls
+  * Test TTS engines
+  * Test chatbot behavior
 
-This remains the **recommended starting point** for understanding and testing the system end-to-end.
-- **File:** `local_app.py`
-- **Purpose:** Unified UI for
-  - Outbound phone calls
-  - TTS generation
-  - Chatbot testing
+#### 🔴 SIP Application
 
-This is the fastest way to understand and test the system.
+* **File:** `sip_app.py`
+* **Purpose:**
 
-### 🟠 Server Components
-- **Directory:** `server_components/`
-- Contains:
-  - TTS servers
-  - Chatbot logic
-  - Phone call orchestration
-  - Provider adapters (ElevenLabs, GPT, etc.)
+  * Entry point for FreeSWITCH-based SIP calls
 
-### 🟢 AWS Runtime Logic
-- **Directory:** `backup/`
-- Includes:
-  - Lambda handlers
-  - Amazon Connect flow backups
-  - Transcription logic
+#### 🟠 Core Backend Services
+
+* **Directory:** `server_components/`
+* **Purpose:**
+
+  * Chatbot logic
+  * Call orchestration
+  * TTS abstraction and caching
+
+#### 🟢 AWS Runtime Logic
+
+* **Directory:** `lambda_functions/`, `flows/`, `backup/`
+* **Purpose:**
+
+  * Amazon Connect flows
+  * AWS Lambda handlers
+  * Backup and recovery artifacts
 
 ---
 
-## 4. Repository Structure (Maintained)
-
-The structure below follows the **original README layout**, with redundant or deprecated elements clearly grouped instead of removed.
+### 5. Repository Structure
 
 ```
 .
-├── local_app.py                 # Main local testing UI (IMPORTANT)
+├── local_app.py                 # Local UI (IMPORTANT)
+├── sip_app.py                   # SIP entrypoint (IMPORTANT)
 │
-├── server_components/           # Core backend logic
-│   ├── app.py                  # Main server entry
-│   ├── phone_call/             # Call orchestration
-│   ├── chatbot/                # Chatbot engine & models
-│   ├── tts/                    # TTS logic, caching, batching
-│   ├── bridge_api/             # Multi-provider TTS abstraction
-│   ├── environments/           # Run scripts and env files
-│   └── requirements.txt
+├── server_components/           # Core backend services
+│   ├── app.py
+│   ├── phone_call/
+│   ├── chatbot/
+│   ├── tts/
+│   ├── bridge_api/
+│   └── environments/
 │
-├── backup/                      # AWS-related backups (IMPORTANT)
-│   ├── aws_connect_backup/      # Contact flows, IAM
-│   ├── InvokeBotLambda.py       # Main Lambda logic
-│   └── TranscribeCustomerSpeech.py
+├── lambda_functions/            # Active AWS Lambda code
+│   ├── InvokeBotLambda.py
+│   └── kvs_Trigger/
 │
-├── lex_bots/                    # Lex V2 bot exports & build scripts
+├── flows/                       # Amazon Connect flows
 │
-├── reports/                     # Daily progress reports & diagrams
+├── backup/                      # AWS backups & snapshots
 │
-├── amazon-connect-realtime-transcription-master/  # Real-time transcription reference
-├── freeswitch/                   # SIP / FreeSWITCH integration
-│   ├── conf/                     # FreeSWITCH configuration
-│   ├── scripts/                  # Dialplan / control scripts
-│   └── README.md                 # SIP setup notes  # Reference integration
+├── documentations/              # Human-readable docs
+│   ├── FreeSWITCH/
+│   └── AI_PhoneCallSystem_Guide.*
 │
-├── README_archive/              # Old / deprecated documentation
-├── README.md                    # This file
-├── README_ko.md                 # Korean documentation
+├── codes_and_scripts/           # Utilities & experiments
+│   ├── sip_app.py
+│   ├── backup_scripts/
+│   └── archive/
+│
+├── amazon-connect-realtime-transcription-master/
+│                               # AWS reference implementation
+│
+├── files/                       # Audio prompts & reference files
+├── ddb/                         # DynamoDB exports (reference)
+├── reports/                     # Progress reports & diagrams
+│
+├── README.md
+├── README_ko.md
 └── requirements.txt
 ```
 
 ---
 
-## 5. TTS Engines (Operational Status)
+### 6. TTS Engines
 
-This section preserves the original multi-TTS philosophy while clarifying current usage.
+#### FishSpeech (Primary)
 
-### ✅ FishSpeech (Primary / Production)
+* Optimized for Korean
+* Supports caching via DynamoDB
+* Recommended for production use
 
-- Used for **Korean TTS**
-- Supports **utterance caching** via DynamoDB
-- Optimized for **low latency** and repeated prompts
+#### ElevenLabs (Optional)
 
-**Status:** Actively used and recommended
+* Used for multilingual or demo purposes
 
----
+#### OpenVoice (Archived)
 
-### ⚠️ ElevenLabs
-
-- Used mainly for:
-  - English or multilingual voices
-  - Demonstration purposes
-
-**Status:** Optional / external dependency
+* Kept for reference only
+* Not required for production
 
 ---
 
-### 🗄️ OpenVoice (Archived / Reference)
-
-- Early real-time TTS experiments
-- Kept for reproducibility and comparison
-- Not required for current production or SIP flows
-
-**Status:** Archived, reference only
-
-- Older real-time TTS experiments
-- Code still exists for reference
-- **Not required** for current production flow
-
-**Status:** Archived / reference only
-
----
-
-## 6. Local Development (Minimal Setup)
-
-### Requirements
+### 7. Local Development
 
 ```bash
 pip install -r requirements.txt
-```
-
-### Environment Variables (Minimal)
-
-```bash
-export NIPA_BASE="https://<backend-endpoint>"
-export NIPA_AUTH="Bearer <TOKEN>"
-```
-
-### Run Local UI
-
-```bash
 python local_app.py
 ```
 
-Access:
+Default UI:
+
 ```
 http://localhost:5051
 ```
 
 ---
 
-## 7. AWS Deployment Notes (Handover)
+### 8. Security & Data Policy
 
-This section consolidates previously duplicated AWS notes into a single reference.
+* **No datasets** are included (e.g., KSponSpeech)
+* **No trained model weights** are included
+* **No secrets or credentials** are committed
+* Secrets must be provided via local `.envrc` or external secret storage
 
-- **Amazon Connect** handles call control and playback
-- **Lex V2 (ko_KR)** captures customer utterances
-- **Lambda** performs:
-  - First-utterance capture
-  - TTS selection
-  - Cache lookup
-- **S3** stores generated audio
-- **DynamoDB** stores normalized utterance hashes
+---
 
-⚠️ IAM permissions and Connect flow configuration are critical. Refer to:
+### 9. Handover Checklist
+
+* [ ] `local_app.py` runs successfully
+* [ ] SIP calls work via FreeSWITCH (if used)
+* [ ] Amazon Connect flows deployed
+* [ ] Lambda environment variables configured
+* [ ] S3 and DynamoDB permissions verified
+
+---
+
+### 10. Maintainer Notes
+
+This repository prioritizes **operational clarity** over minimalism. Some redundancy exists intentionally for AWS recovery and traceability.
+
+---
+
+## 한국어 버전 (KOREAN VERSION)
+
+### 1. 개요
+
+이 저장소는 **Amazon Connect + Lex V2 (한국어) + AWS Lambda** 기반의 **한국어 음성 봇 시스템**입니다. 여러 TTS 엔진을 지원하며, **FreeSWITCH 기반 SIP 통화**도 선택적으로 사용할 수 있습니다.
+
+본 문서는 **인수인계(Handover)** 를 목적으로 작성되었으며, 실험적 코드 및 과거 백업은 유지하되 운영 코드와 명확히 구분되어 있습니다.
+
+---
+
+### 2. 주요 기능
+
+* Amazon Connect 기반 **아웃바운드 전화 발신**
+* Lex V2(ko_KR)를 이용한 **한국어 음성 인식 및 의도 처리**
+* 다중 TTS 엔진 지원
+
+  * FishSpeech (주력)
+  * ElevenLabs (선택)
+  * GPT Voice (실험)
+* **저지연 오디오 재생** (배치 및 캐싱)
+* **로컬 웹 UI** 제공
+* **FreeSWITCH 기반 SIP 통화 지원**
+
+---
+
+### 3. 아키텍처 개요
+
+#### 3.1 Amazon Connect 경로 (주요)
 
 ```
-backup/aws_connect_backup/
+발신자 → Amazon Connect
+   → Lex V2 (ko_KR)
+      → AWS Lambda
+         → TTS 엔진
+         → S3
+         → DynamoDB
+```
+
+#### 3.2 SIP / FreeSWITCH 경로 (선택)
+
+```
+SIP / PSTN
+   → FreeSWITCH
+      → sip_app.py
+         → TTS 엔진
 ```
 
 ---
 
-## 8. What Can Be Safely Ignored (For Maintenance)
+### 4. 주요 실행 지점
 
-The following are intentionally preserved but **not required** for normal operation:
-
-For day-to-day operation or handover:
-
-- `README_archive/`
-- Experimental notebooks or scripts
-- Archived OpenVoice folders
-- Old test scripts not referenced by `local_app.py`
-
-These are kept **only for traceability**.
+* `local_app.py` : 로컬 테스트 UI (권장)
+* `sip_app.py` : SIP 통화 엔트리포인트
+* `server_components/` : 핵심 백엔드 로직
 
 ---
 
-## 9. Recommended Handover Checklist
+### 5. 디렉터리 구조
 
-- [ ] Confirm `local_app.py` runs
-- [ ] Verify outbound call works via FishSpeech
-- [ ] Verify Lex V2 bot is deployed (ko_KR)
-- [ ] Check Lambda environment variables
-- [ ] Confirm S3 + DynamoDB access
-- [ ] Review Connect contact flows (backup folder)
+(영문 구조와 동일하며, 중요도 기준으로 분류됨)
 
----
-
-## 10. Maintainer Notes
-
-This repository reflects a **real production system with historical layers**. Not all folders represent equal importance.
-
-- This repository prioritizes **practical deployment** over cleanliness
-- Some redundancy exists by design (AWS backup safety)
-- When modifying TTS or call logic, start from:
-
-```
-server_components/phone_call/
-server_components/tts/
-```
+* 🔴 필수: `local_app.py`, `sip_app.py`, `server_components/`, `lambda_functions/`, `flows/`
+* 🟠 참고: `documentations/`, `files/`, `reports/`
+* ⚪ 보관용: `codes_and_scripts/archive/`, OpenVoice 관련 코드
 
 ---
 
-## 11. Contact / Context
+### 6. 보안 및 데이터 정책
 
-This system was developed as part of an **AWS-based outbound voice automation project** for Korean-language use cases.
+* 데이터셋은 포함되지 않음
+* 학습된 모델 가중치는 포함되지 않음
+* API 키 및 인증 정보는 Git에 포함되지 않음
 
-If extending or refactoring, it is recommended to **keep FishSpeech + caching logic intact**, as this is the most stable and cost-efficient path.
+---
 
+### 7. 인수인계 체크리스트
+
+* [ ] 로컬 UI 실행 확인
+* [ ] SIP 통화 동작 확인 (사용 시)
+* [ ] Amazon Connect 설정 확인
+* [ ] Lambda 환경 변수 설정
+
+---
+
+### 8. 유지보수 참고사항
+
+본 저장소는 실제 운영 시스템을 기반으로 하며, 일부 중복 또는 기록용 디렉터리가 의도적으로 포함되어 있습니다.
+
+---
+
+**문의:** 본 시스템은 AWS 기반 한국어 음성 자동화 프로젝트의 일부로 개발되었습니다.
