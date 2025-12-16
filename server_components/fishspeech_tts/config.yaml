@@ -1,0 +1,25 @@
+device: cuda          # or cpu
+half: false           # if true → torch.float16; else bfloat16
+compile: false
+load_embeddings: true
+embedding_path: /home/work/VALL-E/audio_samples/cached_ref.pt
+
+# Model artifacts
+llama_checkpoint_path: /home/work/VALL-E/fishspeech/fish-speech/checkpoints/openaudio-s1-mini
+decoder_config_name: modded_dac_vq
+decoder_checkpoint_path: /home/work/VALL-E/fishspeech/fish-speech/checkpoints/openaudio-s1-mini/codec.pth
+
+# Default generation params (can be overridden via CLI)
+sampling:
+  temperature: 0.9
+  top_p: 0.95
+  seed: 42
+
+audio:
+  sample_rate: 22050
+
+# S3 + presign
+s3:
+  bucket: tts-bucket-250810 #seoul-bucket-65432
+  key_prefix: tts-out
+presign_expires: 3600

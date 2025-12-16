@@ -1,0 +1,20 @@
+{
+    "AttachedPolicies": [
+        {
+            "PolicyName": "AmazonConnectLexServiceRolePolicy3015d66a1b81",
+            "PolicyArn": "arn:aws:iam::600818507157:policy/service-role/AmazonConnectLexServiceRolePolicy3015d66a1b81"
+        },
+        {
+            "PolicyName": "AmazonLexV2KmsPolicyForS3Download7f4dd8c3036b",
+            "PolicyArn": "arn:aws:iam::600818507157:policy/service-role/AmazonLexV2KmsPolicyForS3Download7f4dd8c3036b"
+        },
+        {
+            "PolicyName": "AmazonLexV2ComprehendPolicyf04c4b7467e3",
+            "PolicyArn": "arn:aws:iam::600818507157:policy/service-role/AmazonLexV2ComprehendPolicyf04c4b7467e3"
+        },
+        {
+            "PolicyName": "AmazonLexV2KmsPolicy8eb293485b67",
+            "PolicyArn": "arn:aws:iam::600818507157:policy/service-role/AmazonLexV2KmsPolicy8eb293485b67"
+        }
+    ]
+}

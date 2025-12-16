@@ -1,0 +1,12 @@
+{
+    "PolicyNames": [
+        "Connect1",
+        "CreatePromptLambda",
+        "DynamoLambda",
+        "LambdaInvokeLexV2Policy",
+        "LambdaSelfInvoke",
+        "S3ABC",
+        "S3lambda",
+        "S3UploadFromPartner"
+    ]
+}

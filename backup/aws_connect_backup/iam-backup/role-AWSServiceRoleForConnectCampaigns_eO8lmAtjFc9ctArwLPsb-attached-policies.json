@@ -1,0 +1,8 @@
+{
+    "AttachedPolicies": [
+        {
+            "PolicyName": "AmazonConnectCampaignsServiceLinkedRolePolicy",
+            "PolicyArn": "arn:aws:iam::aws:policy/aws-service-role/AmazonConnectCampaignsServiceLinkedRolePolicy"
+        }
+    ]
+}

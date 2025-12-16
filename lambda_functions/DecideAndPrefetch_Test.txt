@@ -1,0 +1,13 @@
+"Test":
+{
+  "Details": {
+    "ContactData": {
+      "Attributes": {
+        "lastUserText": "네, 좋아요",
+        "intent": "AGREE",
+        "lang": "ko-KR"
+      }
+    },
+    "Parameters": {}
+  }
+}

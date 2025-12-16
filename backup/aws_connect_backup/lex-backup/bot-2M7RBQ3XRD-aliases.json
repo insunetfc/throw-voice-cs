@@ -1,0 +1,22 @@
+{
+    "botAliasSummaries": [
+        {
+            "botAliasId": "5QPR5GAJZ7",
+            "botAliasName": "production",
+            "botVersion": "15",
+            "botAliasStatus": "Available",
+            "creationDateTime": "2025-08-26T10:35:33.590000+09:00",
+            "lastUpdatedDateTime": "2025-08-26T21:17:33.887000+09:00"
+        },
+        {
+            "botAliasId": "TSTALIASID",
+            "botAliasName": "TestBotAlias",
+            "description": "test bot alias",
+            "botVersion": "DRAFT",
+            "botAliasStatus": "Available",
+            "creationDateTime": "2025-08-26T10:34:50.423000+09:00",
+            "lastUpdatedDateTime": "2025-08-26T10:34:53.527000+09:00"
+        }
+    ],
+    "botId": "2M7RBQ3XRD"
+}

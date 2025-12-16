@@ -1,0 +1,12 @@
+{
+    "Users": [
+        {
+            "Path": "/",
+            "UserName": "IAM-2887",
+            "UserId": "AIDAYXY4S3WK37ONGM7YB",
+            "Arn": "arn:aws:iam::600818507157:user/IAM-2887",
+            "CreateDate": "2025-07-24T06:13:06+00:00",
+            "PasswordLastUsed": "2025-07-28T23:57:40+00:00"
+        }
+    ]
+}

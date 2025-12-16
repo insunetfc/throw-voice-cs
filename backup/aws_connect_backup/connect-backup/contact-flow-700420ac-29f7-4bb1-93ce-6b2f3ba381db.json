@@ -1,0 +1,16 @@
+{
+    "ContactFlow": {
+        "Arn": "arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/contact-flow/700420ac-29f7-4bb1-93ce-6b2f3ba381db",
+        "Id": "700420ac-29f7-4bb1-93ce-6b2f3ba381db",
+        "Name": "Default outbound",
+        "Type": "OUTBOUND_WHISPER",
+        "State": "ACTIVE",
+        "Status": "PUBLISHED",
+        "Description": "Default flow for outbound calls.",
+        "Content": "{\"Version\":\"2019-10-30\",\"StartAction\":\"c2a77b6b-1579-4870-abf1-bf45f7fa6197\",\"Metadata\":{\"entryPointPosition\":{\"x\":75,\"y\":20},\"snapToGrid\":false,\"ActionMetadata\":{\"fe0cff31-99e2-4b4a-b1ec-ff7baa711d7b\":{\"position\":{\"x\":658,\"y\":131}},\"c2a77b6b-1579-4870-abf1-bf45f7fa6197\":{\"position\":{\"x\":224,\"y\":56}},\"7e89227a-8e96-459d-b243-379815f05ecc\":{\"position\":{\"x\":452,\"y\":107},\"useDynamic\":false}}},\"Actions\":[{\"Identifier\":\"fe0cff31-99e2-4b4a-b1ec-ff7baa711d7b\",\"Parameters\":{},\"Transitions\":{},\"Type\":\"EndFlowExecution\"},{\"Identifier\":\"c2a77b6b-1579-4870-abf1-bf45f7fa6197\",\"Parameters\":{\"RecordingBehavior\":{\"RecordedParticipants\":[]}},\"Transitions\":{\"NextAction\":\"7e89227a-8e96-459d-b243-379815f05ecc\",\"Errors\":[],\"Conditions\":[]},\"Type\":\"UpdateContactRecordingBehavior\"},{\"Identifier\":\"7e89227a-8e96-459d-b243-379815f05ecc\",\"Parameters\":{\"Text\":\"This call is not being recorded.\"},\"Transitions\":{\"NextAction\":\"fe0cff31-99e2-4b4a-b1ec-ff7baa711d7b\",\"Errors\":[],\"Conditions\":[]},\"Type\":\"MessageParticipant\"}]}",
+        "Tags": {},
+        "FlowContentSha256": "3ec7b8962892aa1a1a51cded535faf30a6b23a69f4b4362d657c9bf542f26443",
+        "LastModifiedTime": "2025-07-24T19:26:21.683000+09:00",
+        "LastModifiedRegion": "ap-northeast-2"
+    }
+}

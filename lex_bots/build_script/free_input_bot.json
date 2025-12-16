@@ -1,0 +1,84 @@
+{
+  "botName": "FreeInputBot",
+  "description": "Captures arbitrary Korean speech into a non-required slot",
+  "roleArn": "arn:aws:iam::600818507157:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots_8U05WVB56GE",
+  "dataPrivacy": {
+    "childDirected": false
+  },
+  "idleSessionTTLInSeconds": 300,
+  "botLocales": [
+    {
+      "localeId": "ko_KR",
+      "description": "Korean Locale",
+      "nluConfidenceThreshold": 0.4,
+      "voiceSettings": {
+        "voiceId": "Seoyeon"
+      },
+      "slotTypes": [
+        {
+          "slotTypeName": "FreeFormKoreanSlot",
+          "description": "Freeform dummy Korean slot type",
+          "slotTypeValues": [
+            {
+              "sampleValue": {
+                "value": "임시"
+              }
+            },
+            {
+              "sampleValue": {
+                "value": "공백"
+              }
+            }
+          ],
+          "valueSelectionSetting": {
+            "resolutionStrategy": "OriginalValue"
+          }
+        }
+      ],
+      "intents": [
+        {
+          "intentName": "FreeInputIntent",
+          "sampleUtterances": [
+            { "utterance": "{UserInput}" },
+            { "utterance": "{UserInput} 입니다" },
+            { "utterance": "{UserInput} 이에요" },
+            { "utterance": "{UserInput} 라고 말씀드릴게요" },
+            { "utterance": "문의사항은 {UserInput}" }
+          ],
+          "slots": [
+            {
+              "slotName": "UserInput",
+              "slotTypeName": "FreeFormKoreanSlot",
+              "valueElicitationSetting": {
+                "slotConstraint": "Optional",
+                "promptSpecification": {
+                  "messageGroups": [],
+                  "maxRetries": 0,
+                  "allowInterrupt": true
+                }
+              }
+            }
+          ],
+          "fulfillmentCodeHook": {
+            "enabled": false
+          },
+          "intentClosingSetting": {
+            "closingResponse": {
+              "messageGroups": [
+                {
+                  "message": {
+                    "plainTextMessage": {
+                      "value": "입력 감사합니다."
+                    }
+                  }
+                }
+              ],
+              "allowInterrupt": true
+            },
+            "isActive": true
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+    "ContactFlow": {
+        "Arn": "arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/contact-flow/167daf5a-013d-4f1e-826f-4bfc724e9547",
+        "Id": "167daf5a-013d-4f1e-826f-4bfc724e9547",
+        "Name": "Default agent whisper",
+        "Type": "AGENT_WHISPER",
+        "State": "ACTIVE",
+        "Status": "PUBLISHED",
+        "Description": "Default whisper played to the agent.",
+        "Content": "{\"Version\":\"2019-10-30\",\"StartAction\":\"222caecc-c107-4553-87fc-85a74c34bb06\",\"Metadata\":{\"entryPointPosition\":{\"x\":75,\"y\":20},\"snapToGrid\":false,\"ActionMetadata\":{\"95dc2179-0f18-4646-8e15-15377c9cbb29\":{\"position\":{\"x\":491.0034484863281,\"y\":141.5555419921875}},\"222caecc-c107-4553-87fc-85a74c34bb06\":{\"position\":{\"x\":231.00344848632812,\"y\":96.5555419921875},\"useDynamic\":false}}},\"Actions\":[{\"Identifier\":\"95dc2179-0f18-4646-8e15-15377c9cbb29\",\"Parameters\":{},\"Transitions\":{},\"Type\":\"EndFlowExecution\"},{\"Identifier\":\"222caecc-c107-4553-87fc-85a74c34bb06\",\"Parameters\":{\"Text\":\"$.Queue.Name\"},\"Transitions\":{\"NextAction\":\"95dc2179-0f18-4646-8e15-15377c9cbb29\",\"Errors\":[],\"Conditions\":[]},\"Type\":\"MessageParticipant\"}]}",
+        "Tags": {},
+        "FlowContentSha256": "2079785efdcb0f4ba9b231e46a3a0597d0cfd0aa485f46cb9c49aa1930665043",
+        "LastModifiedTime": "2025-07-24T19:26:20.288000+09:00",
+        "LastModifiedRegion": "ap-northeast-2"
+    }
+}

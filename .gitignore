@@ -1,0 +1,14 @@
+.vscode/
+__pycache__/
+*.pt
+*.pth
+# Secrets / creds (DO NOT COMMIT)
+files/creds/
+**/*token*.txt
+**/*key*.txt
+**/*secret*
+**/aws_env*
+**/*envrc*
+activate.txt
+fishspeech_nipa_activate.txt
+server_components/environments/

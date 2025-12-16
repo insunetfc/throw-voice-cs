@@ -1,0 +1,13 @@
+# ========================= requirements.txt =========================
+# Pin/adjust as needed for your Cloud9 image + GPU/CPU build
+# torch==2.3.1           # choose the right CUDA/ROCm build for your instance
+# torchaudio==2.3.1
+# numpy
+# soundfile
+# pydantic
+# fastapi
+# uvicorn
+# boto3
+# pyyaml
+# # fishspeech              # install your local package or path; comment if editable install
+# ========================= end requirements =========================

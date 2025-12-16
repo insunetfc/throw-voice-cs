@@ -1,0 +1,39 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowConnectListBucket",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "connect.amazonaws.com"
+            },
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::tts-bucket-250810",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceAccount": "905418424724"
+                },
+                "ArnLike": {
+                    "aws:SourceArn": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63"
+                }
+            }
+        },
+        {
+            "Sid": "AllowConnectGetObject",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "connect.amazonaws.com"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::tts-bucket-250810/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceAccount": "905418424724"
+                },
+                "ArnLike": {
+                    "aws:SourceArn": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63"
+                }
+            }
+        }
+    ]
+}

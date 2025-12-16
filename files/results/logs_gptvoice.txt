@@ -1,0 +1,317 @@
+
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "SetLoggingBehavior",
+    "Identifier": "f928a40d-c71e-402b-b684-ee59d9a1c8e1",
+    "Timestamp": "2025-11-12T03:40:18.207Z",
+    "Parameters": {
+        "LoggingBehavior": "Enable"
+    }
+}
+{
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "StartMediaStreaming",
+    "Identifier": "bcd6acdc-cad8-4a71-8c31-6d9f39377a92",
+    "Timestamp": "2025-11-12T03:40:18.219Z",
+    "Parameters": {
+        "MediaStreamTypes": "Audio",
+        "Track": [
+            "ToCustomer",
+            "FromCustomer"
+        ]
+    }
+}
+{
+    "Results": "Success",
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "StartMediaStreaming",
+    "Identifier": "bcd6acdc-cad8-4a71-8c31-6d9f39377a92",
+    "Timestamp": "2025-11-12T03:40:18.815Z"
+}
+{
+    "Results": "Seoyeon",
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "SetVoice",
+    "Identifier": "88a9374a-374a-443c-a12a-74e5ab4156df",
+    "Timestamp": "2025-11-12T03:40:18.819Z",
+    "Parameters": {
+        "SpeakingStyle": "None",
+        "Value": "Seoyeon",
+        "GlobalEngine": "Neural"
+    }
+}
+{
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "SetContactData",
+    "Identifier": "a0d9cadc-772b-4f82-83c8-2e10e2ff8adb",
+    "Timestamp": "2025-11-12T03:40:18.822Z",
+    "Parameters": {
+        "LanguageCode": "ko-KR"
+    }
+}
+{
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "SetAttributes",
+    "Identifier": "46d2ec04-8e21-445c-ab0b-81fa636a6829",
+    "Timestamp": "2025-11-12T03:40:18.871Z",
+    "Parameters": {
+        "Value": "true",
+        "AddAttributeToRelatedContact": "false",
+        "Key": "transcribeCall"
+    }
+}
+{
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "SetAttributes",
+    "Identifier": "46d2ec04-8e21-445c-ab0b-81fa636a6829",
+    "Timestamp": "2025-11-12T03:40:18.872Z",
+    "Parameters": {
+        "Value": "true",
+        "AddAttributeToRelatedContact": "false",
+        "Key": "saveCallRecording"
+    }
+}
+{
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "SetAttributes",
+    "Identifier": "46d2ec04-8e21-445c-ab0b-81fa636a6829",
+    "Timestamp": "2025-11-12T03:40:18.873Z",
+    "Parameters": {
+        "Value": "ko-KR",
+        "AddAttributeToRelatedContact": "false",
+        "Key": "languageCode"
+    }
+}
+{
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "InvokeExternalResource",
+    "Identifier": "5c142a97-1519-4b3d-bce5-d505601aedd2",
+    "Timestamp": "2025-11-12T03:40:18.875Z",
+    "Parameters": {
+        "FunctionArn": "arn:aws:lambda:ap-northeast-2:905418424724:function:kvs-recording-kvsConsumerTrigger-grlpCK9dwpSD",
+        "ResponseValidation": "ResponseType=STRING_MAP",
+        "InvocationType": "ASYNCHRONOUS",
+        "TimeLimit": "8000"
+    }
+}
+{
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "InvokeExternalResource",
+    "Identifier": "c9f2145b-944a-4845-9b92-bc033fd4e8e4",
+    "Timestamp": "2025-11-12T03:40:18.994Z",
+    "ExternalResults": {
+        "ready": "true",
+        "AudioS3Url0": "https://tts-bucket-250810.s3.ap-northeast-2.amazonaws.com/greetings/intro/46e86904418543b8a6d42f0192ec7e64.wav",
+        "AudioS3UrlCount": "1",
+        "BatchCount": "1",
+        "HasMore": "false",
+        "cache_hit": "true",
+        "intro": "true",
+        "display_name": "파파파",
+        "phone_number": "+821043876322",
+        "phone_in_db": "true"
+    },
+    "Parameters": {
+        "FunctionArn": "arn:aws:lambda:ap-northeast-2:905418424724:function:WarmGreetingLambda",
+        "Parameters": {
+            "action": "intro_greet"
+        },
+        "ResponseValidation": "ResponseType=JSON",
+        "InvocationType": "SYNCHRONOUS",
+        "TimeLimit": "3000"
+    }
+}
+{
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "GetUserInput",
+    "Identifier": "Play Greeting",
+    "Timestamp": "2025-11-12T03:40:19.142Z",
+    "Parameters": {
+        "NoInputTimeout": "3000",
+        "LexVersion": "V2",
+        "BotAliasArn": "arn:aws:lex:ap-northeast-2:905418424724:bot-alias/ENOV0CLDHS/LPAEZPXVLI",
+        "PromptLocation": "https://tts-bucket-250810.s3.ap-northeast-2.amazonaws.com/greetings/intro/46e86904418543b8a6d42f0192ec7e64.wav",
+        "Parameter": "x-amz-lex:connect-originating-request-id=1cedc861-9567-32e9-b9e7-87d03aa1e461",
+        "Voice": "Seoyeon",
+        "PromptSource": "S3",
+        "MaxSpeechDuration": "12000"
+    }
+}
+{
+    "Results": "Captureutterance",
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "GetUserInput",
+    "Identifier": "Play Greeting",
+    "Timestamp": "2025-11-12T03:40:25.174Z"
+}
+{
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "InvokeExternalResource",
+    "Identifier": "392e66a2-d4ff-4a7f-bc4c-0c41c21d5cf9",
+    "Timestamp": "2025-11-12T03:40:25.179Z",
+    "ExternalResults": {
+        "setAttributes": {
+            "intro_decision": "yes",
+            "intro_user_input": "네 맞아요"
+        },
+        "ready": "true"
+    },
+    "Parameters": {
+        "FunctionArn": "arn:aws:lambda:ap-northeast-2:905418424724:function:WarmGreetingLambda",
+        "Parameters": {
+            "user_input": "네 맞아요",
+            "action": "intro_reply"
+        },
+        "ResponseValidation": "ResponseType=JSON",
+        "InvocationType": "SYNCHRONOUS",
+        "TimeLimit": "5000"
+    }
+}
+{
+    "Results": "true",
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "CheckAttribute",
+    "Identifier": "c5e737ba-0b7f-4a7b-bb1d-3d5bc9bad2f0",
+    "Timestamp": "2025-11-12T03:40:25.328Z",
+    "Parameters": {
+        "Value": "yes",
+        "SecondValue": "yes",
+        "ComparisonMethod": "Equals"
+    }
+}
+{
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "GetUserInput",
+    "Identifier": "Promotional Call",
+    "Timestamp": "2025-11-12T03:40:25.332Z",
+    "Parameters": {
+        "NoInputTimeout": "3000",
+        "LexVersion": "V2",
+        "BotAliasArn": "arn:aws:lex:ap-northeast-2:905418424724:bot-alias/ENOV0CLDHS/LPAEZPXVLI",
+        "PromptLocation": "https://tts-bucket-250810.s3.ap-northeast-2.amazonaws.com/neutral/Promotional_Continue.wav",
+        "Parameter": "x-amz-lex:connect-originating-request-id=7647fbda-993a-3486-bc94-cf147305b9c7",
+        "PromptSource": "S3",
+        "Voice": "Seoyeon",
+        "MaxSpeechDuration": "12000"
+    }
+}
+{
+    "Results": "Captureutterance",
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "GetUserInput",
+    "Identifier": "Promotional Call",
+    "Timestamp": "2025-11-12T03:40:32.713Z"
+}
+{
+    "Results": "false",
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "CheckAttribute",
+    "Identifier": "5908eb66-1350-45e0-86d6-7de515f0c52f",
+    "Timestamp": "2025-11-12T03:40:32.717Z",
+    "Parameters": {
+        "Value": "CaptureUtterance",
+        "SecondValue": "FallbackIntent",
+        "ComparisonMethod": "Equals"
+    }
+}
+{
+    "Results": "true",
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "CheckAttribute",
+    "Identifier": "a4b66d0f-3cf3-4d12-a071-47bd76da20e6",
+    "Timestamp": "2025-11-12T03:40:32.722Z",
+    "Parameters": {
+        "Value": "CaptureUtterance",
+        "SecondValue": "CaptureUtterance",
+        "ComparisonMethod": "Equals"
+    }
+}
+{
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "InvokeExternalResource",
+    "Identifier": "Get Chatbot Response",
+    "Timestamp": "2025-11-12T03:40:32.726Z",
+    "ExternalResults": {
+        "setAttributes": {
+            "ready": "true",
+            "AudioS3UrlCount": "1",
+            "HasMore": "false",
+            "intent": "continue",
+            "reply_text": "안녕하세요!",
+            "voice_id_used": "",
+            "gpt_ms": "2876",
+            "tts_ms": "0",
+            "upload_ms": "160",
+            "total_ms": "3036",
+            "AudioS3Url0": "https://tts-bucket-250810.s3.ap-northeast-2.amazonaws.com/bridge/audio/gpt/20251112_9340c255f9b14b67949a2f5a5c2dcb1f.wav",
+            "lambda_total_ms": "3179",
+            "engine": "gpt-voice"
+        }
+    },
+    "Parameters": {
+        "FunctionArn": "arn:aws:lambda:ap-northeast-2:905418424724:function:InvokeBotLambda_11",
+        "Parameters": {
+            "text": "안녕하세요",
+            "mode": "brain_gpt_voice",
+            "action": "voice_response"
+        },
+        "ResponseValidation": "ResponseType=JSON",
+        "InvocationType": "SYNCHRONOUS",
+        "TimeLimit": "4000"
+    }
+}
+{
+    "ContactId": "8824f6dd-682d-45f6-9253-6320732c6f42",
+    "ContactFlowId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/contact-flow/b7c0c1be-a84a-489e-a428-e13505c85aca",
+    "ContactFlowName": "CustomerFeedback",
+    "ContactFlowModuleType": "GetUserInput",
+    "Identifier": "Playback and Continue Conversation",
+    "Timestamp": "2025-11-12T03:40:35.944Z",
+    "Parameters": {
+        "NoInputTimeout": "3000",
+        "LexVersion": "V2",
+        "BotAliasArn": "arn:aws:lex:ap-northeast-2:905418424724:bot-alias/ENOV0CLDHS/LPAEZPXVLI",
+        "PromptLocation": "https://tts-bucket-250810.s3.ap-northeast-2.amazonaws.com/bridge/audio/gpt/20251112_9340c255f9b14b67949a2f5a5c2dcb1f.wav",
+        "Parameter": "x-amz-lex:connect-originating-request-id=7777de61-908f-32f5-8b5e-41b612a0a188",
+        "PromptSource": "S3",
+        "Voice": "Seoyeon",
+        "MaxSpeechDuration": "12000"
+    }
+}

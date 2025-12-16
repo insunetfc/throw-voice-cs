@@ -1,0 +1,2 @@
+"pk","bucket","expires_at","final_text","input_text","key","prompt_arn","state","updated_at"
+"4300857e4f9f73f77c35df462a6b782bbb8c91ba","seoul-bucket-65432","1756690837","""안녕하세요, 차집사입니다. 저희는 자동차 딜러 분들께 고객 소개 시 광고비를 제공해 드리고 있습니다. 관심 있으시면 더 자세히 안내드리겠습니다.""","""안녕하세요, 테스트 TTS 요청입니다.""","connect/sessions/b7a3f298b8e04e2d8a5c4c7b69fdb45a.wav","arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/prompt/f142771f-0a54-41d4-9d17-20093fb577fa","ready","1755481256"

@@ -1,0 +1,10 @@
+{
+  "botId": "ZUZDJPUFTG",
+  "botVersion": "DRAFT",
+  "localeId": "ko_KR",
+  "description": "Korean locale for free input bot",
+  "nluIntentConfidenceThreshold": 0.4,
+  "voiceSettings": {
+    "voiceId": "Seoyeon"
+  }
+}

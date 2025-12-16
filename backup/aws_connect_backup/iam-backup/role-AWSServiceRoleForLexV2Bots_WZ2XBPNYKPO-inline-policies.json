@@ -1,0 +1,7 @@
+{
+    "PolicyNames": [
+        "AmazonLexServicePolicy-WZ2XBPNYKPO-CloudWatchPolicy",
+        "AmazonLexServicePolicy-WZ2XBPNYKPO-LogCloudWatchPolicy",
+        "AmazonLexServicePolicy-WZ2XBPNYKPO-S3Policy"
+    ]
+}

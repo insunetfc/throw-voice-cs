@@ -1,0 +1,427 @@
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-bot \
+  --cli-input-json file://free_input_bot.json
+
+Parameter validation failed:
+Unknown parameter in input: "botLocales", must be one of: botName, description, roleArn, dataPrivacy, idleSessionTTLInSeconds, botTags, testBotAliasTags, botType, botMembers
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-bot \
+  --cli-input-json file://create_bot.json
+
+An error occurred (PreconditionFailedException) when calling the CreateBot operation: Bot with name FreeInputBot already exists. Use another name.
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-bot   --cli-input-json file://create_bot.json
+{
+    "botId": "THVPHS55WP",
+    "botName": "FreeInputBotKorean",
+    "description": "Captures arbitrary Korean speech",
+    "roleArn": "arn:aws:iam::600818507157:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots_8U05WVB56GE",
+    "dataPrivacy": {
+        "childDirected": false
+    },
+    "idleSessionTTLInSeconds": 300,
+    "botStatus": "Creating",
+    "creationDateTime": 1754271025.198,
+    "botType": "Bot"
+}
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-bot-locale \                                 
+  --bot-id THVPHS55WP\
+  --locale-id ko_KR \
+  --cli-input-json file://create_locale_koKR.json
+{
+    "botId": "THVPHS55WP",
+    "botVersion": "DRAFT",
+    "localeName": "Korean (South Korea)",
+    "localeId": "ko_KR",
+    "description": "Korean locale for free input bot",
+    "nluIntentConfidenceThreshold": 0.4,
+    "voiceSettings": {
+        "voiceId": "Seoyeon",
+        "engine": "standard"
+    },
+    "botLocaleStatus": "Creating",
+    "creationDateTime": 1754271058.252
+}
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-slot-type \
+  --bot-id THVPHS55WP \
+  --bot-version DRAFT \
+  --locale-id ko_KR \
+  --slot-type-name FreeFormKoreanSlot \
+  --value-selection-setting '{"resolutionStrategy": "OriginalValue"}' \
+  --slot-type-values '[
+    {"sampleValue": {"value": "임시"}},
+    {"sampleValue": {"value": "공백"}}
+  ]'
+{
+    "slotTypeId": "2TLXCYK9AU",
+    "slotTypeName": "FreeFormKoreanSlot",
+    "slotTypeValues": [
+        {
+            "sampleValue": {
+                "value": "임시"
+            }
+        },
+        {
+            "sampleValue": {
+                "value": "공백"
+            }
+        }
+    ],
+    "valueSelectionSetting": {
+        "resolutionStrategy": "OriginalValue"
+    },
+    "botId": "THVPHS55WP",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "creationDateTime": 1754271159.031
+}
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-intent \
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-intent \
+  --bot-id THVPHS55WP \
+  --bot-version DRAFT \
+  --locale-id ko_KR \nputIntent \
+  --intent-name FreeInputIntent \
+  --sample-utterances '[Input}"},
+    {"utterance": "{UserInput}"},니다"},
+    {"utterance": "{UserInput} 입니다"},
+    {"utterance": "{UserInput} 이에요"},드릴게요"},
+    {"utterance": "{UserInput} 라고 말씀드릴게요"},
+    {"utterance": "문의사항은 {UserInput}"}
+  ]'
+{
+    "intentId": "40VDNUM3E1",
+    "intentName": "FreeInputIntent",
+    "sampleUtterances": [
+        {
+            "utterance": "{UserInput}"
+        },
+        {
+            "utterance": "{UserInput} 입니다"
+        },
+        {
+            "utterance": "{UserInput} 이에요"
+        },
+        {
+            "utterance": "{UserInput} 라고 말씀드릴게요"
+        },
+        {
+            "utterance": "문의사항은 {UserInput}"
+        }
+    ],
+    "botId": "THVPHS55WP",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "creationDateTime": 1754271199.391
+}
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-slot \
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-slot \
+  --bot-id THVPHS55WP \
+  --bot-version DRAFT \
+  --locale-id ko_KR \3E1 \
+  --intent-id 40VDNUM3E1 \
+  --slot-name UserInput \AU \
+  --slot-type-id 2TLXCYK9AU \ '{
+  --value-elicitation-setting '{,
+    "slotConstraint": "Optional",
+    "promptSpecification": {
+      "messageGroups": [true해주세요."
+  }'} "allowInterrupt": true해주세요."
+> ^C
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-slot \
+  --bot-id THVPHS55WP \
+  --bot-version DRAFT \
+  --locale-id ko_KR \
+  --intent-id 40VDNUM3E1 \
+  --slot-name UserInput \
+  --slot-type-id 2TLXCYK9AU \
+  --value-elicitation-setting '{
+    "slotConstraint": "Optional",
+    "promptSpecification": {
+      "messageGroups": [
+  }'} "allowInterrupt": true해주세요."
+{
+    "slotId": "SGBS1J7Y3B",
+    "slotName": "UserInput",
+    "slotTypeId": "2TLXCYK9AU",
+    "valueElicitationSetting": {
+        "slotConstraint": "Optional",
+        "promptSpecification": {
+            "messageGroups": [
+                {
+                    "message": {
+                        "plainTextMessage": {
+                            "value": "말씀해주세요."
+                        }
+                    }
+                }
+            ],
+            "maxRetries": 0,
+            "allowInterrupt": true,
+            "messageSelectionStrategy": "Random",
+            "promptAttemptsSpecification": {
+                "Initial": {
+                    "allowInterrupt": true,
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        },
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "endTimeoutMs": 5000,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#"
+                        }
+                    },
+                    "textInputSpecification": {
+                        "startTimeoutMs": 30000
+                    }
+                }
+            }
+        }
+    },
+    "botId": "THVPHS55WP",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "intentId": "40VDNUM3E1",
+    "creationDateTime": 1754271431.57
+}
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models build-bot-locale \
+  --bot-id THVPHS55WP \
+  --locale-id ko_KR \
+  --bot-version DRAFT
+{
+    "botId": "THVPHS55WP",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "botLocaleStatus": "Building",
+    "lastBuildSubmittedDateTime": 1754271499.447
+}
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models describe-bot-locale \
+  --bot-id THVPHS55WP \
+  --locale-id ko_KR \
+  --bot-version DRAFT
+{
+    "botId": "THVPHS55WP",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "localeName": "Korean (South Korea)",
+    "description": "Korean locale for free input bot",
+    "nluIntentConfidenceThreshold": 0.4,
+    "voiceSettings": {
+        "voiceId": "Seoyeon",
+        "engine": "standard"
+    },
+    "intentsCount": 2,
+    "slotTypesCount": 1,
+    "botLocaleStatus": "Failed",
+    "failureReasons": [
+        "Slot ids [UserInput] in intent FreeInputIntent don't define a slot priority. Update the intent to add a priority to these slots."
+    ],
+    "creationDateTime": 1754271058.252,
+    "lastUpdatedDateTime": 1754271058.252,
+    "lastBuildSubmittedDateTime": 1754271499.447,
+    "recommendedActions": []
+}
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models list-slots
+To see help text, you can run:
+
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
+
+usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+aws: error: the following arguments are required: --bot-id, --bot-version, --locale-id, --intent-id
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models list-slots \
+  --bot-id THVPHS55WP \
+  --bot-version DRAFT \
+  --locale-id ko_KR \
+  --intent-id 40VDNUM3E1
+{
+    "botId": "THVPHS55WP",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "intentId": "40VDNUM3E1",
+    "slotSummaries": [
+        {
+            "slotId": "SGBS1J7Y3B",
+            "slotName": "UserInput",
+            "slotConstraint": "Optional",
+            "slotTypeId": "2TLXCYK9AU",
+            "valueElicitationPromptSpecification": {
+                "messageGroups": [
+                    {
+                        "message": {
+                            "plainTextMessage": {
+                                "value": "말씀해주세요."
+                            }
+                        }
+                    }
+                ],
+                "maxRetries": 0,
+                "allowInterrupt": true,
+                "messageSelectionStrategy": "Random",
+                "promptAttemptsSpecification": {
+                    "Initial": {
+                        "allowInterrupt": true,
+                        "allowedInputTypes": {
+                            "allowAudioInput": true,
+                            "allowDTMFInput": true
+                        },
+                        "audioAndDTMFInputSpecification": {
+                            "startTimeoutMs": 4000,
+                            "audioSpecification": {
+                                "maxLengthMs": 15000,
+                                "endTimeoutMs": 640
+                            },
+                            "dtmfSpecification": {
+                                "maxLength": 513,
+                                "endTimeoutMs": 5000,
+                                "deletionCharacter": "*",
+                                "endCharacter": "#"
+                            }
+                        },
+                        "textInputSpecification": {
+                            "startTimeoutMs": 30000
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models update-intent \
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models update-intent \
+  --bot-id THVPHS55WP \
+  --bot-version DRAFT \
+  --locale-id ko_KR \3E1 \
+  --intent-id 40VDNUM3E1 \ntent \
+  --intent-name FreeInputIntent \
+  --sample-utterances '[Input}"},
+    {"utterance": "{UserInput}"},니다"},
+    {"utterance": "{UserInput} 입니다"},
+    {"utterance": "{UserInput} 이에요"},드릴게요"},
+    {"utterance": "{UserInput} 라고 말씀드릴게요"},
+  ]"} \"slotId\": \"SGBS1J7Y3B\"serInput}"}
+> ^C
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models update-intent \
+  --bot-id THVPHS55WP \
+  --bot-version DRAFT \
+  --locale-id ko_KR \
+  --intent-id 40VDNUM3E1 \
+  --intent-name FreeInputIntent \
+  --sample-utterances '[
+    {"utterance": "{UserInput}"},
+    {"utterance": "{UserInput} 입니다"},
+    {"utterance": "{UserInput} 이에요"},
+    {"utterance": "{UserInput} 라고 말씀드릴게요"},
+  ]'} "slotId": "SGBS1J7Y3B"  {UserInput}"}
+{
+    "intentId": "40VDNUM3E1",
+    "intentName": "FreeInputIntent",
+    "sampleUtterances": [
+        {
+            "utterance": "{UserInput}"
+        },
+        {
+            "utterance": "{UserInput} 입니다"
+        },
+        {
+            "utterance": "{UserInput} 이에요"
+        },
+        {
+            "utterance": "{UserInput} 라고 말씀드릴게요"
+        },
+        {
+            "utterance": "문의사항은 {UserInput}"
+        }
+    ],
+    "slotPriorities": [
+        {
+            "priority": 1,
+            "slotId": "SGBS1J7Y3B"
+        }
+    ],
+    "botId": "THVPHS55WP",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "creationDateTime": 1754271199.391,
+    "lastUpdatedDateTime": 1754271681.243
+}
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models build-bot-locale \
+  --bot-id THVPHS55WP \
+  --locale-id ko_KR \
+  --bot-version DRAFT
+{
+    "botId": "THVPHS55WP",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "botLocaleStatus": "Building",
+    "lastBuildSubmittedDateTime": 1754271713.489
+}
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models describe-bot-locale \
+  --bot-id THVPHS55WP \
+  --locale-id ko_KR \
+  --bot-version DRAFT
+{
+    "botId": "THVPHS55WP",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "localeName": "Korean (South Korea)",
+    "description": "Korean locale for free input bot",
+    "nluIntentConfidenceThreshold": 0.4,
+    "voiceSettings": {
+        "voiceId": "Seoyeon",
+        "engine": "standard"
+    },
+    "intentsCount": 2,
+    "slotTypesCount": 1,
+    "botLocaleStatus": "Building",
+    "creationDateTime": 1754271058.252,
+    "lastUpdatedDateTime": 1754271058.252,
+    "lastBuildSubmittedDateTime": 1754271713.489
+}
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-bot-alias \
+  --bot-id THVPHS55WP \
+  --bot-alias-name production \
+  --bot-version 1
+
+An error occurred (PreconditionFailedException) when calling the CreateBotAlias operation: Failed to retrieve parent resource since it does not exist
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-bot-alias \
+  --bot-id THVPHS55WP \
+  --bot-alias-name production \
+  --bot-version DRAFT
+
+An error occurred (ValidationException) when calling the CreateBotAlias operation: 1 validation error detected: Value at 'botVersion' failed to satisfy constraint: Member must satisfy regular expression pattern: ^[0-9]+$
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-bot-version \
+  --bot-id THVPHS55WP \
+  --bot-version-locale-specification '{
+    "ko_KR": {
+      "sourceBotVersion": "DRAFT"
+    }
+  }'
+{
+    "botId": "THVPHS55WP",
+    "botVersion": "1",
+    "botVersionLocaleSpecification": {
+        "ko_KR": {
+            "sourceBotVersion": "DRAFT"
+        }
+    },
+    "botStatus": "Versioning",
+    "creationDateTime": 1754271810.474
+}
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-bot-alias \
+  --bot-id THVPHS55WP \
+  --bot-alias-name production \
+  --bot-version 1
+{
+    "botAliasId": "GSH2W8JQ0A",
+    "botAliasName": "production",
+    "botVersion": "1",
+    "botAliasStatus": "Creating",
+    "botId": "THVPHS55WP",
+    "creationDateTime": 1754271827.583
+}

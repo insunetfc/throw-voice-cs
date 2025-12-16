@@ -1,0 +1,7 @@
+{
+    "PolicyNames": [
+        "AllowVPCSupport",
+        "LogsForLambda",
+        "XRay"
+    ]
+}

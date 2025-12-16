@@ -1,0 +1,16 @@
+{
+    "ContactFlow": {
+        "Arn": "arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/contact-flow/70199a6d-2e6c-4961-a763-d9ced76f5ed2",
+        "Id": "70199a6d-2e6c-4961-a763-d9ced76f5ed2",
+        "Name": "ContactFlowTestInterrupt",
+        "Type": "CONTACT_FLOW",
+        "State": "ACTIVE",
+        "Status": "PUBLISHED",
+        "Description": "ContactFlowTestInterrupt",
+        "Content": "{\"Version\":\"2019-10-30\",\"StartAction\":\"dfc81d6b-7e4e-4075-9c05-ccefda3ee4cc\",\"Metadata\":{\"entryPointPosition\":{\"x\":40,\"y\":40},\"ActionMetadata\":{\"9305afe6-99df-4b09-b833-fbf3547a9b68\":{\"position\":{\"x\":752.8,\"y\":377.6}},\"dfc81d6b-7e4e-4075-9c05-ccefda3ee4cc\":{\"position\":{\"x\":284.8,\"y\":61.6},\"parameters\":{\"PromptId\":{\"displayName\":\"Music_Pop_ThisAndThatIsLife_Inst.wav\"}},\"promptName\":\"Music_Pop_ThisAndThatIsLife_Inst.wav\",\"conditionMetadata\":[]},\"5e2ecff5-f7c2-401a-a5d6-d0fc6aec0a5f\":{\"position\":{\"x\":575.2,\"y\":72},\"parameters\":{\"PromptId\":{\"displayName\":\"PromotionalCalls\"}},\"promptName\":\"PromotionalCalls\"}},\"Annotations\":[]},\"Actions\":[{\"Parameters\":{},\"Identifier\":\"9305afe6-99df-4b09-b833-fbf3547a9b68\",\"Type\":\"DisconnectParticipant\",\"Transitions\":{}},{\"Parameters\":{\"StoreInput\":\"False\",\"InputTimeLimitSeconds\":\"5\",\"PromptId\":\"arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/prompt/aefe48da-a08a-43ec-afab-50e8a7fc99f8\"},\"Identifier\":\"dfc81d6b-7e4e-4075-9c05-ccefda3ee4cc\",\"Type\":\"GetParticipantInput\",\"Transitions\":{\"NextAction\":\"5e2ecff5-f7c2-401a-a5d6-d0fc6aec0a5f\",\"Errors\":[{\"NextAction\":\"9305afe6-99df-4b09-b833-fbf3547a9b68\",\"ErrorType\":\"InputTimeLimitExceeded\"},{\"NextAction\":\"5e2ecff5-f7c2-401a-a5d6-d0fc6aec0a5f\",\"ErrorType\":\"NoMatchingCondition\"},{\"NextAction\":\"9305afe6-99df-4b09-b833-fbf3547a9b68\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"PromptId\":\"arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/prompt/f61bb4fe-f0bb-47a9-a4ed-80f0e5c3025c\"},\"Identifier\":\"5e2ecff5-f7c2-401a-a5d6-d0fc6aec0a5f\",\"Type\":\"MessageParticipant\",\"Transitions\":{\"NextAction\":\"9305afe6-99df-4b09-b833-fbf3547a9b68\",\"Errors\":[{\"NextAction\":\"9305afe6-99df-4b09-b833-fbf3547a9b68\",\"ErrorType\":\"NoMatchingError\"}]}}]}",
+        "Tags": {},
+        "FlowContentSha256": "08d0e3a02c926f617c23f66d5f7e811ef03b362a7dfbb76de2f0de9f49074159",
+        "LastModifiedTime": "2025-07-29T09:59:58.360000+09:00",
+        "LastModifiedRegion": "ap-northeast-2"
+    }
+}

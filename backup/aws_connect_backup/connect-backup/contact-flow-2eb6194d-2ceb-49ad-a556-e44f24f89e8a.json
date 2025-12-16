@@ -1,0 +1,16 @@
+{
+    "ContactFlow": {
+        "Arn": "arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/contact-flow/2eb6194d-2ceb-49ad-a556-e44f24f89e8a",
+        "Id": "2eb6194d-2ceb-49ad-a556-e44f24f89e8a",
+        "Name": "InterruptTranscribeFlow",
+        "Type": "CONTACT_FLOW",
+        "State": "ACTIVE",
+        "Status": "PUBLISHED",
+        "Description": "InterruptTranscribeFlow",
+        "Content": "{\"Version\":\"2019-10-30\",\"StartAction\":\"fb4aa2a2-8399-4949-8d36-5459bb40ff07\",\"Metadata\":{\"entryPointPosition\":{\"x\":40,\"y\":40},\"ActionMetadata\":{\"f919c9b7-89a1-49a2-a0c3-0bde4d5e4468\":{\"position\":{\"x\":816,\"y\":193.6}},\"fb4aa2a2-8399-4949-8d36-5459bb40ff07\":{\"position\":{\"x\":188,\"y\":72.8},\"parameters\":{\"PromptId\":{\"displayName\":\"Music_Jazz_MyTimetoFly_Inst.wav\"},\"LexV2Bot\":{\"AliasArn\":{\"displayName\":\"Alias5\",\"useLexBotDropdown\":true,\"lexV2BotName\":\"SimpleSupportBot\"}}},\"promptName\":\"Music_Jazz_MyTimetoFly_Inst.wav\",\"useLexBotDropdown\":true,\"lexV2BotName\":\"SimpleSupportBot\",\"lexV2BotAliasName\":\"Alias5\",\"conditionMetadata\":[{\"id\":\"1b41376b-0635-4924-bf4e-6d70a0e4ee04\",\"operator\":{\"name\":\"Equals\",\"value\":\"Equals\",\"shortDisplay\":\"=\"},\"value\":\"TriggerIntent\"}]},\"743ae2de-ef4f-4f65-93ef-39ed7ec865d1\":{\"position\":{\"x\":451.2,\"y\":95.2},\"parameters\":{\"PromptId\":{\"displayName\":\"Beep.wav\"}},\"promptName\":\"Beep.wav\"}},\"Annotations\":[]},\"Actions\":[{\"Parameters\":{},\"Identifier\":\"f919c9b7-89a1-49a2-a0c3-0bde4d5e4468\",\"Type\":\"EndFlowExecution\",\"Transitions\":{}},{\"Parameters\":{\"PromptId\":\"arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/prompt/d16214c6-48ca-4ae8-bd22-a17864a06d4b\",\"LexV2Bot\":{\"AliasArn\":\"arn:aws:lex:ap-northeast-2:600818507157:bot-alias/KI8VYUVLYE/QKXQGBZN8M\"}},\"Identifier\":\"fb4aa2a2-8399-4949-8d36-5459bb40ff07\",\"Type\":\"ConnectParticipantWithLexBot\",\"Transitions\":{\"NextAction\":\"f919c9b7-89a1-49a2-a0c3-0bde4d5e4468\",\"Conditions\":[{\"NextAction\":\"743ae2de-ef4f-4f65-93ef-39ed7ec865d1\",\"Condition\":{\"Operator\":\"Equals\",\"Operands\":[\"TriggerIntent\"]}}],\"Errors\":[{\"NextAction\":\"743ae2de-ef4f-4f65-93ef-39ed7ec865d1\",\"ErrorType\":\"NoMatchingCondition\"},{\"NextAction\":\"f919c9b7-89a1-49a2-a0c3-0bde4d5e4468\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"PromptId\":\"arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/prompt/3bbd540a-8f88-4018-a1af-83eb118c1200\"},\"Identifier\":\"743ae2de-ef4f-4f65-93ef-39ed7ec865d1\",\"Type\":\"MessageParticipant\",\"Transitions\":{\"NextAction\":\"f919c9b7-89a1-49a2-a0c3-0bde4d5e4468\",\"Errors\":[{\"NextAction\":\"f919c9b7-89a1-49a2-a0c3-0bde4d5e4468\",\"ErrorType\":\"NoMatchingError\"}]}}]}",
+        "Tags": {},
+        "FlowContentSha256": "d069a136332f3343c179d672e089b03cef55a3db7c9f04012aa3ce11959d0bcc",
+        "LastModifiedTime": "2025-08-01T11:12:07.689000+09:00",
+        "LastModifiedRegion": "ap-northeast-2"
+    }
+}

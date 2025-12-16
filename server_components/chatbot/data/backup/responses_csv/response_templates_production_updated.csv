@@ -1,0 +1,37 @@
+intent,response,context,notes
+greeting,"안녕하세요, 자동차 보험 비교·가입 도와드리는 차집사 다이렉트입니다. 잠시 통화 가능하실까요?",formal_opening,Standard formal opening
+greeting,"안녕하세요, 차집사 다이렉트입니다. 보험료 비교 안내 간단히 드려도 될까요?",casual_opening,"Shorter, more casual"
+greeting,"네, 안녕하세요. 차집사 다이렉트 상담원입니다.",brief_opening,Very brief response
+about_company,저희 차집사는 인슈넷 FC 제휴사로 여러 보험사와 연계해 최적의 자동차보험료를 찾아드립니다.,company_intro,Basic company explanation
+about_company,"차집사 다이렉트는 40년 전통의 인슈넷 FC 자회사로, 정식 등록된 보험 비교 서비스입니다.",legitimacy_emphasis,Emphasize trust/legitimacy
+about_company,"저희는 비교견적부터 가입까지 한 번에 도와드리며, 가입 후에는 AI ARS 1668-4007로 고객님을 보험사에 직접 연결해드립니다.",service_detail,Service differentiation
+fee_question,소개 수수료는 7%이며 지급 시점은 익일 오후입니다. 원하시면 지금 비교 견적 접수해 드릴까요?,fee_summary,Complete answer with CTA
+fee_question,"네, 수수료는 건당 7%입니다. 정산은 보통 익일 오후에 입금됩니다.",fee_factual,Direct factual answer
+fee_question,"현재 조건은 7%이며, 지급은 익일 오후로 안내드립니다.",fee_brief,Brief confirmation
+fee_question,"수수료 7%, 익일 오후 지급입니다. 등록하신 계좌로 이체해 드립니다.",fee_with_method,Include payment method
+more_questions,AI ARS 1668-4007 번호로 가입 고객의 보험사에 직접 연결되며 긴급출동 안내도 가능합니다.,ars_feature,ARS service explanation
+more_questions,견적은 보통 10분 내에 안내드리며 기존 보험과의 비교도 가능합니다.,process_timing,Process and timeline
+more_questions,전담 상담원이 배정되어 청약까지 끝까지 도와드립니다. 필요한 서류는 문자로 안내드립니다.,support_detail,Support process
+more_questions,"고객님께 별도 연락이 가지 않도록 AI로 처리하며, 필요시 보험사와 직접 연결해드립니다.",customer_concern,Address customer worry
+positive,좋습니다! 비교 견적 바로 진행하고 결과를 문자로 보내드리겠습니다.,interest_action,Move to action quickly
+positive,감사합니다. 담당자 연결해서 빠르게 안내드리겠습니다.,interest_transfer,Transfer to specialist
+positive,"네, 명함과 자세한 자료를 지금 문자로 보내드리겠습니다. 검토 후 연락 주세요.",material_request,Sending materials
+positive,알겠습니다. 자료와 담당자 연락처를 카톡으로 전달드리겠습니다.,kakao_request,KakaoTalk delivery
+positive,감사합니다! 좋은 하루 되세요.,closing_thanks,PROPER CLOSING - use when dealer says thanks/goodbye
+positive,"네, 감사합니다. 필요하시면 언제든 연락 주세요. 좋은 하루 보내세요!",closing_polite,Polite closing with future opening
+rejection,알겠습니다. 명함만 문자로 남겨드릴게요. 필요하실 때 연락 주세요.,hard_rejection_soft,"Soft exit, leave door open"
+rejection,"네, 이해했습니다. 좋은 하루 되세요.",hard_rejection_close,Clean close
+rejection,알겠습니다. 편하신 시간에 다시 연락드려도 될까요?,soft_rejection_reschedule,Attempt to reschedule
+rejection,"네, 바쁘실 텐데 방해 드려 죄송합니다. 명함만 남겨둘게요.",soft_rejection_apologize,Apologetic exit
+rejection,"네, 지금 바쁘시군요. 언제 다시 연락드리면 좋을까요?",busy_reschedule,"Acknowledge busy, reschedule"
+other,이해합니다. 그래도 한 번 비교만 받아보시는 건 어떠세요? 수수료 7%와 높은 체결율이 강점입니다.,other_soft_pitch,Gentle persuasion
+other,"네, 기존 거래처 있으시군요. 혹시 비교견적만 받아보시고 결정하셔도 됩니다.",other_comparison,Offer comparison
+other,알겠습니다. 혹시 조건 확인해보시고 싶으시면 언제든 연락 주세요.,other_soft_close,"Soft close, leave door open"
+other,"네, 이해합니다. 명함만 남겨드릴게요. 비교 필요하실 때 연락 주세요.",other_accept_close,Accept their situation
+fallback,죄송합니다. 제가 정확히 이해하지 못했어요. 한 번만 더 말씀해 주시겠어요?,clarification_request,Polite clarification
+fallback,정확한 안내를 위해 궁금하신 점을 조금만 더 구체적으로 알려주실 수 있을까요?,specific_request,Ask for specifics
+fallback,"어떤 부분이 가장 궁금하신가요? 수수료, 절차, 서비스 중에서 알려드릴까요?",guided_choice,Offer specific options
+fallback,혹시 담당자와 직접 통화하시겠어요? 더 자세히 안내드릴 수 있습니다.,escalate_human,Escalate to human
+about_company_homepage,차집사 다이렉트 안내 페이지 링크를 문자로 보내드릴게요. 통화 끝나면 문자만 확인해 주세요.,,homepage_request
+contact_namecard,담당자 명함이랑 안내 자료를 지금 문자로 드리겠습니다. 필요하실 때 편하게 연락 주세요.,,namecard_or_contact_request
+closing_thanks_end,"네, 말씀 감사합니다. 오늘도 좋은 하루 보내세요.",,use_when_user_says_thanks_or_wants_to_end

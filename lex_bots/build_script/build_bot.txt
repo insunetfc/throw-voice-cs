@@ -1,0 +1,302 @@
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-bot \
+  --cli-input-json file://create_bot.json
+
+(output)
+{
+    "botId": "ZUZDJPUFTG",
+    "botName": "FreeInputBot",
+    "description": "Captures arbitrary Korean speech",
+    "roleArn": "arn:aws:iam::600818507157:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots_8U05WVB56GE",
+    "dataPrivacy": {
+        "childDirected": false
+    },
+    "idleSessionTTLInSeconds": 300,
+    "botStatus": "Creating",
+    "creationDateTime": 1754268007.397,
+    "botType": "Bot"
+}
+
+% change create_locale_koKR.json
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-bot-locale \
+  --cli-input-json file://create_locale_koKR.json
+
+(output)
+{
+    "botId": "ZUZDJPUFTG",
+    "botVersion": "DRAFT",
+    "localeName": "Korean (South Korea)",
+    "localeId": "ko_KR",
+    "description": "Korean locale for free input bot",
+    "nluIntentConfidenceThreshold": 0.4,
+    "voiceSettings": {
+        "voiceId": "Seoyeon",
+        "engine": "standard"
+    },
+    "botLocaleStatus": "Creating",
+    "creationDateTime": 1754268190.755
+}
+
+
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-slot-type \
+  --bot-id ZUZDJPUFTG \
+  --bot-version DRAFT \
+  --locale-id ko_KR \
+  --slot-type-name FreeFormKoreanSlot \
+  --value-selection-setting '{"resolutionStrategy": "OriginalValue"}' \
+  --slot-type-values '[
+    {"sampleValue": {"value": "임시"}},
+    {"sampleValue": {"value": "공백"}}
+  ]'
+
+(output)
+{
+    "slotTypeId": "ND8KPJVHTZ",
+    "slotTypeName": "FreeFormKoreanSlot",
+    "slotTypeValues": [
+        {
+            "sampleValue": {
+                "value": "임시"
+            }
+        },
+        {
+            "sampleValue": {
+                "value": "공백"
+            }
+        }
+    ],
+    "valueSelectionSetting": {
+        "resolutionStrategy": "OriginalValue"
+    },
+    "botId": "ZUZDJPUFTG",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "creationDateTime": 1754268285.063
+}
+
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-intent \
+  --bot-id ZUZDJPUFTG \
+  --bot-version DRAFT \
+  --locale-id ko_KR \
+  --intent-name FreeInputIntent \
+  --sample-utterances '[
+    {"utterance": "{UserInput}"},
+    {"utterance": "{UserInput} 입니다"},
+    {"utterance": "{UserInput} 이에요"},
+    {"utterance": "{UserInput} 라고 말씀드릴게요"},
+    {"utterance": "문의사항은 {UserInput}"}
+  ]'
+  
+(output)
+{
+    "intentId": "6ES2AIAS5J",
+    "intentName": "FreeInputIntent",
+    "sampleUtterances": [
+        {
+            "utterance": "{UserInput}"
+        },
+        {
+            "utterance": "{UserInput} 입니다"
+        },
+        {
+            "utterance": "{UserInput} 이에요"
+        },
+        {
+            "utterance": "{UserInput} 라고 말씀드릴게요"
+        },
+        {
+            "utterance": "문의사항은 {UserInput}"
+        }
+    ],
+    "botId": "ZUZDJPUFTG",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "creationDateTime": 1754268309.896
+}
+
+
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-slot \
+  --bot-id ZUZDJPUFTG \
+  --bot-version DRAFT \
+  --locale-id ko_KR \
+  --intent-id 6ES2AIAS5J \
+  --slot-name UserInput \
+  --slot-type-id ND8KPJVHTZ \
+  --value-elicitation-setting '{
+    "slotConstraint": "Optional",
+    "promptSpecification": {
+      "messageGroups": [
+        {
+          "message": {
+            "plainTextMessage": {
+              "value": "말씀해주세요."
+            }
+          }
+        }
+      ],
+      "maxRetries": 0,
+      "allowInterrupt": true
+    }
+  }'
+  
+
+
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models build-bot-locale \
+  --bot-id ZUZDJPUFTG \
+  --locale-id ko_KR \
+  --bot-version DRAFT
+  
+  
+{
+    "botId": "ZUZDJPUFTG",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "botLocaleStatus": "Building",
+    "lastBuildSubmittedDateTime": 1754268516.75
+}
+
+
+
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models update-intent \
+  --bot-id ZUZDJPUFTG \
+  --bot-version DRAFT \
+  --locale-id ko_KR \
+  --intent-id 6ES2AIAS5J \
+  --intent-name FreeInputIntent \
+  --sample-utterances '[
+    {"utterance": "{UserInput}"},
+    {"utterance": "{UserInput} 입니다"},
+    {"utterance": "{UserInput} 이에요"},
+    {"utterance": "{UserInput} 라고 말씀드릴게요"},
+    {"utterance": "문의사항은 {UserInput}"}
+  ]' \
+  --slot-priorities '[
+    {
+      "priority": 1,
+      "slotId": "TMGFQJ2O8Z"
+    }
+  ]'
+
+(output)
+{
+  "intentId": "6ES2AIAS5J",
+  "intentName": "FreeInputIntent",
+  "sampleUtterances": [
+    {
+      "utterance": "{UserInput}"
+    },
+    {
+      "utterance": "{UserInput} 입니다"
+    },
+    {
+      "utterance": "{UserInput} 이에요"
+    },
+    {
+      "utterance": "{UserInput} 라고 말씀드릴게요"
+    },
+    {
+      "utterance": "문의사항은 {UserInput}"
+    }
+  ],
+  "slotPriorities": [
+    {
+      "priority": 1,
+      "slotId": "TMGFQJ2O8Z"
+    }
+  ],
+  "botId": "ZUZDJPUFTG",
+  "botVersion": "DRAFT",
+  "localeId": "ko_KR",
+  "creationDateTime": 1754268309.896,
+  "lastUpdatedDateTime": 1754268783.993
+}
+
+
+
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models build-bot-locale \
+  --bot-id ZUZDJPUFTG \
+  --locale-id ko_KR \
+  --bot-version DRAFT
+
+(output)
+{
+    "botId": "ZUZDJPUFTG",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "botLocaleStatus": "Building",
+    "lastBuildSubmittedDateTime": 1754268795.333
+}
+
+% check if built
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models describe-bot-locale \
+  --bot-id ZUZDJPUFTG \
+  --locale-id ko_KR \
+  --bot-version DRAFT
+
+(output)
+{
+    "botId": "ZUZDJPUFTG",
+    "botVersion": "DRAFT",
+    "localeId": "ko_KR",
+    "localeName": "Korean (South Korea)",
+    "description": "Korean locale for free input bot",
+    "nluIntentConfidenceThreshold": 0.4,
+    "voiceSettings": {
+        "voiceId": "Seoyeon",
+        "engine": "standard"
+    },
+    "intentsCount": 2,
+    "slotTypesCount": 1,
+    "botLocaleStatus": "Built",
+    "creationDateTime": 1754268190.755,
+    "lastUpdatedDateTime": 1754268190.755,
+    "lastBuildSubmittedDateTime": 1754268795.333
+}
+
+
+
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-bot-version \
+  --bot-id ZUZDJPUFTG \
+  --bot-version-locale-specification '{
+    "ko_KR": {
+      "sourceBotVersion": "DRAFT"
+    }
+  }'
+
+(output)
+{
+    "botId": "ZUZDJPUFTG",
+    "botVersion": "1",
+    "botVersionLocaleSpecification": {
+        "ko_KR": {
+            "sourceBotVersion": "DRAFT"
+        }
+    },
+    "botStatus": "Versioning",
+    "creationDateTime": 1754268935.686
+}
+
+
+(xtts) tiongsik@tiongsik:~/Python/outbound_call/bots$ aws lexv2-models create-bot-alias \
+  --bot-id ZUZDJPUFTG \
+  --bot-alias-name production \
+  --bot-version 1
+  
+(output)
+{
+    "botAliasId": "GSH2W8JQ0A",
+    "botAliasName": "production",
+    "botVersion": "1",
+    "botAliasStatus": "Creating",
+    "botId": "ZUZDJPUFTG",
+    "creationDateTime": 1754268947.258
+}
+
+#######################TEST#############################
+aws lexv2-runtime recognize-text \
+  --bot-id ZUZDJPUFTG \
+  --bot-alias-id GSH2W8JQ0A \
+  --locale-id ko_KR \
+  --session-id test-session-001 \
+  --text "택배가 언제 도착하나요?" \
+  --region ap-northeast-1
+

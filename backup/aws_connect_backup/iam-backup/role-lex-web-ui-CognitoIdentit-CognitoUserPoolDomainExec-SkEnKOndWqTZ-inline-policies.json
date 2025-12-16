@@ -1,0 +1,9 @@
+{
+    "PolicyNames": [
+        "AllowVPCSupport",
+        "CodeBuildUpdate",
+        "CognitoAuth",
+        "LogsForLambda",
+        "XRay"
+    ]
+}

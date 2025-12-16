@@ -1,0 +1,13 @@
+"GPT Voice"
+{
+  "mode": "gpt_voice",
+  "text": "바빠요",
+  "final_only": true
+}
+
+"GPT Voice Eleven"
+{
+  "mode": "gpt_voice_eleven",
+  "text": "바빠요",
+  "final_only": true
+}

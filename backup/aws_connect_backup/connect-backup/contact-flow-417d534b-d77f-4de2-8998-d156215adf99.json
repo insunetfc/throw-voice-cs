@@ -1,0 +1,16 @@
+{
+    "ContactFlow": {
+        "Arn": "arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/contact-flow/417d534b-d77f-4de2-8998-d156215adf99",
+        "Id": "417d534b-d77f-4de2-8998-d156215adf99",
+        "Name": "FlowPlayPrompt",
+        "Type": "OUTBOUND_WHISPER",
+        "State": "ACTIVE",
+        "Status": "PUBLISHED",
+        "Description": "FlowPlayPrompt",
+        "Content": "{\"Version\":\"2019-10-30\",\"StartAction\":\"f95c4f39-19b0-4868-84e7-b5ed6b51ad6f\",\"Metadata\":{\"entryPointPosition\":{\"x\":40,\"y\":40},\"ActionMetadata\":{\"fd95e2a7-9542-4e67-a3af-12057a593945\":{\"position\":{\"x\":602.4,\"y\":314.4}},\"f95c4f39-19b0-4868-84e7-b5ed6b51ad6f\":{\"position\":{\"x\":155.2,\"y\":228},\"parameters\":{\"PromptId\":{\"displayName\":\"KoreanPrompt\"}},\"promptName\":\"KoreanPrompt\"}},\"Annotations\":[]},\"Actions\":[{\"Parameters\":{},\"Identifier\":\"fd95e2a7-9542-4e67-a3af-12057a593945\",\"Type\":\"EndFlowExecution\",\"Transitions\":{}},{\"Parameters\":{\"PromptId\":\"arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/prompt/c91cb2ff-91fb-492e-a226-a8e4cca7f99d\"},\"Identifier\":\"f95c4f39-19b0-4868-84e7-b5ed6b51ad6f\",\"Type\":\"MessageParticipant\",\"Transitions\":{\"NextAction\":\"fd95e2a7-9542-4e67-a3af-12057a593945\"}}]}",
+        "Tags": {},
+        "FlowContentSha256": "8e0d07854031a1f94053d3db38873a2febf75b9bd19c790eee7f0d3f7a86bdbf",
+        "LastModifiedTime": "2025-07-24T19:35:18.435000+09:00",
+        "LastModifiedRegion": "ap-northeast-2"
+    }
+}

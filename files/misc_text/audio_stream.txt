@@ -1,0 +1,28 @@
+freeswitch@ip-172-31-22-170> uuid_audio_stream 3eeb13f2-926c-4449-bdd4-73389e401549 start wss://e466c7d6c9f2.ngrok-free.app/ws/fs-bridge/3eeb13f2-926c-4449-bdd4-73389e401549 mixed 16k {"test":1}
++OK Success
+
+2025-12-01 07:05:18.662279 92.47% [DEBUG] mod_audio_stream.c:151 mod_audio_stream cmd: 3eeb13f2-926c-4449-bdd4-73389e401549 start wss://e466c7d6c9f2.ngrok-free.app/ws/fs-bridge/3eeb13f2-926c-4449-bdd4-73389e401549 mixed 16k {"test":1}
+2025-12-01 07:05:18.662279 92.47% [DEBUG] mod_audio_stream.c:82 calling stream_session_init.
+2025-12-01 07:05:18.662279 92.47% [DEBUG] audio_streamer_glue.cpp:349 (3eeb13f2-926c-4449-bdd4-73389e401549) resampling from 48000 to 16000
+2025-12-01 07:05:18.662279 92.47% [DEBUG] audio_streamer_glue.cpp:360 (3eeb13f2-926c-4449-bdd4-73389e401549) stream_data_init
+2025-12-01 07:05:18.662279 92.47% [DEBUG] mod_audio_stream.c:88 adding bug.
+2025-12-01 07:05:18.662279 92.47% [DEBUG] switch_core_media_bug.c:976 Attaching BUG to sofia/internal/1000@43.202.112.167
+2025-12-01 07:05:18.662279 92.47% [DEBUG] mod_audio_stream.c:92 setting bug private data.
+2025-12-01 07:05:18.662279 92.47% [DEBUG] mod_audio_stream.c:95 exiting start_capture.
+2025-12-01 07:05:18.702321 92.47% [DEBUG] switch_core_io.c:448 Setting BUG Codec opus:116
+2025-12-01 07:05:18.702321 92.47% [DEBUG] mod_opus.c:629 Opus encoder: set bitrate to local settings [72000bps]
+2025-12-01 07:05:18.722336 92.47% [INFO] audio_streamer_glue.cpp:166 connection closed
+EXECUTE [depth=0] sofia/internal/1002@43.202.112.167:5060 hash(insert/43.202.112.167-spymap/1002/9255ad6a-18b3-4f28-ae79-797f71052109)
+EXECUTE [depth=0] sofia/internal/1002@43.202.112.167:5060 hash(insert/43.202.112.167-last_dial/1002/5009421472304302)
+EXECUTE [depth=0] sofia/internal/1002@43.202.112.167:5060 hash(insert/43.202.112.167-last_dial/global/9255ad6a-18b3-4f28-ae79-797f71052109)
+EXECUTE [depth=0] sofia/internal/1002@43.202.112.167:5060 export(RFC2822_DATE=Mon, 01 Dec 2025 07:05:20 +0000)
+2025-12-01 07:05:20.582394 92.40% [DEBUG] switch_channel.c:1334 EXPORT (export_vars) [RFC2822_DATE]=[Mon, 01 Dec 2025 07:05:20 +0000]
+EXECUTE [depth=0] sofia/internal/1002@43.202.112.167:5060 transfer(5009421472304302 enum)
+2025-12-01 07:05:20.582394 92.40% [DEBUG] switch_ivr.c:2296 (sofia/internal/1002@43.202.112.167:5060) State Change CS_EXECUTE -> CS_ROUTING
+2025-12-01 07:05:20.582394 92.40% [NOTICE] switch_ivr.c:2303 Transfer sofia/internal/1002@43.202.112.167:5060 to enum[5009421472304302@default]
+2025-12-01 07:05:20.582394 92.40% [DEBUG] switch_core_state_machine.c:647 (sofia/internal/1002@43.202.112.167:5060) State EXECUTE going to sleep
+2025-12-01 07:05:20.582394 92.40% [DEBUG] switch_core_state_machine.c:581 (sofia/internal/1002@43.202.112.167:5060) Running State Change CS_ROUTING (Cur 3 Tot 2056)
+2025-12-01 07:05:20.582394 92.40% [DEBUG] switch_core_state_machine.c:640 (sofia/internal/1002@43.202.112.167:5060) State ROUTING
+2025-12-01 07:05:20.582394 92.40% [DEBUG] mod_sofia.c:149 Call appears to be already acknowledged
+2025-12-01 07:05:20.582394 92.40% [DEBUG] mod_sofia.c:158 sofia/internal/1002@43.202.112.167:5060 SOFIA ROUTING
+

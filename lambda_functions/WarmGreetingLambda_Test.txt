@@ -1,0 +1,23 @@
+"Generate Voice Synthesis"
+{
+  "Details": {
+    "Parameters": {
+      "action": "intro_greet",
+      "phone_number": "+821043876322",
+      "display_name": "황충식",
+      "force_refresh": "false"
+    },
+    "ContactData": {
+      "CustomerEndpoint": {"Address": "+821000000000"}
+    }
+  }
+}
+
+
+"Test Reply"
+{
+  "Details": {
+    "Parameters": { "action": "intro_reply", "user_input": "네" }
+  }
+}
+

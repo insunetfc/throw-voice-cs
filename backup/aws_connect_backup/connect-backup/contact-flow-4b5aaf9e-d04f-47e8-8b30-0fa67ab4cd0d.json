@@ -1,0 +1,16 @@
+{
+    "ContactFlow": {
+        "Arn": "arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/contact-flow/4b5aaf9e-d04f-47e8-8b30-0fa67ab4cd0d",
+        "Id": "4b5aaf9e-d04f-47e8-8b30-0fa67ab4cd0d",
+        "Name": "Default customer whisper",
+        "Type": "CUSTOMER_WHISPER",
+        "State": "ACTIVE",
+        "Status": "PUBLISHED",
+        "Description": "Default whisper played to the customer",
+        "Content": "{\"Version\":\"2019-10-30\",\"StartAction\":\"8614b74d-3946-4bb3-9808-0e47df651838\",\"Metadata\":{\"entryPointPosition\":{\"x\":75,\"y\":20},\"snapToGrid\":false,\"ActionMetadata\":{\"0da12357-da4c-4581-b21e-45b1ceee510d\":{\"position\":{\"x\":479,\"y\":181}},\"8614b74d-3946-4bb3-9808-0e47df651838\":{\"position\":{\"x\":239,\"y\":100},\"useDynamic\":false,\"promptName\":\"Beep.wav\"}}},\"Actions\":[{\"Identifier\":\"0da12357-da4c-4581-b21e-45b1ceee510d\",\"Parameters\":{},\"Transitions\":{},\"Type\":\"EndFlowExecution\"},{\"Identifier\":\"8614b74d-3946-4bb3-9808-0e47df651838\",\"Parameters\":{\"PromptId\":\"arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/prompt/3bbd540a-8f88-4018-a1af-83eb118c1200\"},\"Transitions\":{\"NextAction\":\"0da12357-da4c-4581-b21e-45b1ceee510d\",\"Errors\":[],\"Conditions\":[]},\"Type\":\"MessageParticipant\"}]}",
+        "Tags": {},
+        "FlowContentSha256": "2b1ba10709e65c029145a9bb4709aaf57e40e729b645bc93819ef7b6ec6d0a37",
+        "LastModifiedTime": "2025-07-24T19:26:21.370000+09:00",
+        "LastModifiedRegion": "ap-northeast-2"
+    }
+}

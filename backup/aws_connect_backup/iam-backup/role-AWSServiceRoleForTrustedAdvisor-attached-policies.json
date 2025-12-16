@@ -1,0 +1,8 @@
+{
+    "AttachedPolicies": [
+        {
+            "PolicyName": "AWSTrustedAdvisorServiceRolePolicy",
+            "PolicyArn": "arn:aws:iam::aws:policy/aws-service-role/AWSTrustedAdvisorServiceRolePolicy"
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+{
+  "botName": "FreeInputBotKorean",
+  "description": "Captures arbitrary Korean speech",
+  "roleArn": "arn:aws:iam::600818507157:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots_8U05WVB56GE",
+  "dataPrivacy": {
+    "childDirected": false
+  },
+  "idleSessionTTLInSeconds": 300
+}

@@ -1,0 +1,25 @@
+{
+  "botId": "ZUZDJPUFTG",
+  "botVersion": "DRAFT",
+  "localeId": "ko_KR",
+  "intentId": "6ES2AIAS5J",
+  "slotId": "TMGFQJ2O8Z",
+  "slotName": "UserInput",
+  "slotTypeId": "ND8KPJVHTZ",
+  "valueElicitationSetting": {
+    "slotConstraint": "Optional",
+    "promptSpecification": {
+      "messageGroups": [
+        {
+          "message": {
+            "plainTextMessage": {
+              "value": "말씀해주세요."
+            }
+          }
+        }
+      ],
+      "maxRetries": 1,
+      "allowInterrupt": true
+    }
+  }
+}

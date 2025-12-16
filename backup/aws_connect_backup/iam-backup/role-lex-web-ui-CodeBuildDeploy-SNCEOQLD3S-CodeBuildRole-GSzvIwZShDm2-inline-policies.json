@@ -1,0 +1,10 @@
+{
+    "PolicyNames": [
+        "CloudFrontInvalidateDistribution",
+        "CloudWatchLogsCodeBuild",
+        "PollySynthesizeSpeech",
+        "S3GetObject",
+        "S3ReadWrite",
+        "TranslateText"
+    ]
+}

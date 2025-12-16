@@ -1,0 +1,69 @@
+scp -r ./repo.zip ubuntu@172.31.22.170:/home/ubuntu/rtc_backend
+
+ws://43.202.112.167:5066
+1000
+p4ssw0rd-1000-EC2-xyz
+43.202.112.167
+
+1001
+1234
+43.202.112.167
+
+ssh -i throw-freeswitch.pem -L 8080:localhost:8080 ubuntu@43.202.112.167
+sudo /usr/local/freeswitch/bin/fs_cli
+
+curl https://ipinfo.io/ip
+
+Certificate is saved at: /etc/letsencrypt/live/freeswitch.throw.im/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/freeswitch.throw.im/privkey.pem
+
+
+<include>
+  <user id="1001">
+    <params>
+      <param name="password" value="!insunetfc1001"/>
+    </params>
+    <variables>
+      <variable name="user_context" value="default"/>
+      <variable name="effective_caller_id_name" value="User 1001"/>
+      <variable name="effective_caller_id_number" value="1001"/>
+    </variables>
+  </user>
+</include>
+
+
+Rollback later would be:
+
+sudo systemctl stop freeswitch
+sudo rm -rf /usr/local/freeswitch
+sudo mv /usr/local/freeswitch_backup_YYYYMMDD /usr/local/freeswitch
+sudo systemctl start freeswitch
+
+grep -R "tls-cert-dir" -n /usr/local/freeswitch/conf
+grep -R "tls-cert-file" -n /usr/local/freeswitch/conf
+grep -R "tls-key-file" -n /usr/local/freeswitch/conf
+
+/usr/local/freeswitch/conf/autoload_configs/sofia.conf.xml
+
+
+99_rtc_bridge_setup
+
+<include>
+  <extension name="rtc_bridge_test">
+    <condition field="destination_number" expression="^3333$">
+      <!-- Answer the call -->
+      <action application="answer"/>
+
+      <!-- Send and receive 16-bit 24kHz mono linear PCM over RTP to local port 4000 -->
+      <action application="external_media"
+              data="rtp://127.0.0.1:4000/rtp?codec=L16@24000h@1c&flags=sendrecv"/>
+
+      <!-- Hang up when external_media returns -->
+      <action application="hangup"/>
+    </condition>
+  </extension>
+</include>
+
+
+/usr/local/freeswitch/bin/fs_cli -p ClueCon -x "reloadxml"
+/usr/local/freeswitch/bin/fs_cli -p ClueCon -x "module_exists mod_audio_stream"

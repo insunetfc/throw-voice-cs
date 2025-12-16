@@ -1,0 +1,14 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowSelfInvoke",
+      "Effect": "Allow",
+      "Action": "lambda:InvokeFunction",
+      "Resource": [
+        "arn:aws:lambda:ap-northeast-2:905418424724:function:InvokeBotLambda",
+        "arn:aws:lambda:ap-northeast-2:905418424724:function:InvokeBotLambda:*"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "88a9374a-374a-443c-a12a-74e5ab4156df",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 40,
+      "y": 40
+    },
+    "ActionMetadata": {
+      "58f4ee4f-8a66-456a-a09d-067b92bc44b3": {
+        "position": {
+          "x": 1184.8,
+          "y": 385.6
+        }
+      },
+      "88a9374a-374a-443c-a12a-74e5ab4156df": {
+        "position": {
+          "x": 172.8,
+          "y": 35.2
+        },
+        "children": [
+          "fa535798-6a5c-4d24-9088-437c27605668"
+        ],
+        "parameters": {
+          "TextToSpeechVoice": {
+            "languageCode": "ko-KR"
+          }
+        },
+        "overrideConsoleVoice": true,
+        "fragments": {
+          "SetContactData": "fa535798-6a5c-4d24-9088-437c27605668"
+        },
+        "overrideLanguageAttribute": true
+      },
+      "fa535798-6a5c-4d24-9088-437c27605668": {
+        "position": {
+          "x": 172.8,
+          "y": 35.2
+        },
+        "dynamicParams": []
+      },
+      "998bd497-df95-4308-b0b7-0c42103ed3c2": {
+        "position": {
+          "x": 187.2,
+          "y": 266.4
+        },
+        "parameters": {
+          "LambdaFunctionARN": {
+            "displayName": "InvokeBotLambda"
+          }
+        },
+        "dynamicMetadata": {
+          "action": false,
+          "JobId": false,
+          "NextIndex": false
+        }
+      },
+      "0c111d89-e604-4526-8299-a73606ab2a15": {
+        "position": {
+          "x": 936.8,
+          "y": 98.4
+        }
+      },
+      "f0bf7194-10a7-4a8c-ae39-5176032e740b": {
+        "position": {
+          "x": 978.4,
+          "y": 479.2
+        },
+        "parameters": {
+          "PromptId": {
+            "displayName": "Beep.wav"
+          }
+        },
+        "promptName": "Beep.wav"
+      },
+      "b00fbffb-647d-4700-b1c2-6738ee5cdac8": {
+        "position": {
+          "x": 404.8,
+          "y": 49.6
+        }
+      },
+      "aafc1faf-3619-4f76-a634-5af65f49b18d": {
+        "position": {
+          "x": 649.6,
+          "y": 62.4
+        },
+        "parameters": {
+          "Media": {
+            "Uri": {
+              "useDynamic": true
+            }
+          }
+        },
+        "useDynamic": true
+      }
+    },
+    "Annotations": [],
+    "name": "ContactFlowPrompt",
+    "description": "ContactFlowPrompt",
+    "type": "contactFlow",
+    "status": "published",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {},
+      "Identifier": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+      "Type": "EndFlowExecution",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "TextToSpeechVoice": "Seoyeon",
+        "TextToSpeechEngine": "Neural",
+        "TextToSpeechStyle": "None"
+      },
+      "Identifier": "88a9374a-374a-443c-a12a-74e5ab4156df",
+      "Type": "UpdateContactTextToSpeechVoice",
+      "Transitions": {
+        "NextAction": "fa535798-6a5c-4d24-9088-437c27605668",
+        "Errors": [
+          {
+            "NextAction": "998bd497-df95-4308-b0b7-0c42103ed3c2",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LanguageCode": "ko-KR"
+      },
+      "Identifier": "fa535798-6a5c-4d24-9088-437c27605668",
+      "Type": "UpdateContactData",
+      "Transitions": {
+        "NextAction": "998bd497-df95-4308-b0b7-0c42103ed3c2",
+        "Errors": [
+          {
+            "NextAction": "998bd497-df95-4308-b0b7-0c42103ed3c2",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LambdaFunctionARN": "arn:aws:lambda:ap-northeast-2:600818507157:function:InvokeBotLambda",
+        "InvocationTimeLimitSeconds": "8",
+        "InvocationType": "SYNCHRONOUS",
+        "LambdaInvocationAttributes": {
+          "action": "get_next_batch",
+          "JobId": "f8dc972d42884c9b9097fed271e192e3",
+          "NextIndex": "0"
+        },
+        "ResponseValidation": {
+          "ResponseType": "JSON"
+        }
+      },
+      "Identifier": "998bd497-df95-4308-b0b7-0c42103ed3c2",
+      "Type": "InvokeLambdaFunction",
+      "Transitions": {
+        "NextAction": "b00fbffb-647d-4700-b1c2-6738ee5cdac8",
+        "Errors": [
+          {
+            "NextAction": "f0bf7194-10a7-4a8c-ae39-5176032e740b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "FlowLoggingBehavior": "Enabled"
+      },
+      "Identifier": "0c111d89-e604-4526-8299-a73606ab2a15",
+      "Type": "UpdateFlowLoggingBehavior",
+      "Transitions": {
+        "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3"
+      }
+    },
+    {
+      "Parameters": {
+        "PromptId": "arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/prompt/3bbd540a-8f88-4018-a1af-83eb118c1200"
+      },
+      "Identifier": "f0bf7194-10a7-4a8c-ae39-5176032e740b",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+        "Errors": [
+          {
+            "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "FlowLoggingBehavior": "Enabled"
+      },
+      "Identifier": "b00fbffb-647d-4700-b1c2-6738ee5cdac8",
+      "Type": "UpdateFlowLoggingBehavior",
+      "Transitions": {
+        "NextAction": "aafc1faf-3619-4f76-a634-5af65f49b18d"
+      }
+    },
+    {
+      "Parameters": {
+        "Media": {
+          "Uri": "$.External.setAttributes.AudioS3Url0",
+          "SourceType": "S3",
+          "MediaType": "Audio"
+        }
+      },
+      "Identifier": "aafc1faf-3619-4f76-a634-5af65f49b18d",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "0c111d89-e604-4526-8299-a73606ab2a15",
+        "Errors": [
+          {
+            "NextAction": "f0bf7194-10a7-4a8c-ae39-5176032e740b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}

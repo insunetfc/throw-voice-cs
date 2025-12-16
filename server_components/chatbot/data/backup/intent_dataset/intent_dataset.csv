@@ -1,0 +1,440 @@
+question,label
+몇 프로에요?,fee_question
+몇 프로요?,fee_question
+몇 퍼센트죠?,fee_question
+몇 %에요?,fee_question
+몇 %요?,fee_question
+몇 퍼센트요?,fee_question
+몇 퍼센트에요?,fee_question
+몇 프로라고요?,fee_question
+몇 퍼센트라고요?,fee_question
+수수료 얼마라고요?,fee_question
+몇 퍼요?,fee_question
+몇 프로라고 하셨죠?,fee_question
+몇 퍼라고 하셨죠?
+퍼센트가 얼마나 되는데요,fee_question
+몇 퍼인데요,fee_question
+몇 프론데요,fee_question
+몇 프로인데요,fee_question
+몇퍼센튼데요,fee_question
+몇 퍼센트인데요,fee_question
+프로가 어떻게 돼요?,fee_question
+정확히 몇 % 주시나요?,fee_question
+얼마 주는데요?,fee_question
+대략 수수료 몇이에요?,fee_question
+수수료가요?,fee_question
+수수료 어떻게 되죠?,fee_question
+연결하면 얼마 받아요?,fee_question
+소개하면 얼마 주나요?,fee_question
+지급률이 궁금한데요,fee_question
+수수료율은 어떻게 되세요?,fee_question
+다른 곳은 몇 % 주던데요?,fee_question
+여기는 몇 %에요?,fee_question
+보험 연결하면 돈 받는 거 아니에요?,fee_question
+이게 몇 프로짜리죠?,fee_question
+몇 %나 주는 건가요?,fee_question
+정산은 몇 %죠?,fee_question
+보험사랑 연결되면 얼마나 나와요?,fee_question
+차집사 몇 % 줘요?,fee_question
+거래하면 얼마 나와요?,fee_question
+대충 얼마쯤이에요?,fee_question
+그럼 수익은 몇 퍼예요?,fee_question
+보통 몇 % 주던데요,fee_question
+정산율은 몇이죠?,fee_question
+지급률 몇 %인지요?,fee_question
+7% 맞아요?,fee_question
+7보다 높나요?,fee_question
+이거 하면 얼마 떨어져요?,fee_question
+얼마 준다고 했죠?,fee_question
+몇 프로 주시는 건가요?,fee_question
+수수료 조건이 어떻게 돼요?,fee_question
+지급 시점은 언제예요?,fee_question
+수수료는 세금 떼고 지급되나요?,fee_question
+다이렉트도 7% 주는 건가요?,fee_question
+얼마나 주는데요?,fee_question
+바로 주는 거예요?,fee_question
+삼성도 포함돼요?,fee_question
+돈 언제 들어와요?,fee_question
+계좌로 바로 들어오나요?,fee_question
+차집사가 어디에요?,about_company
+어디서 전화하신 거예요?,about_company
+차집사가 뭔가요?,about_company
+정식 제휴사에요?,about_company
+차 뭐라고요?,about_company
+보험사에요?,about_company
+뭐하는 회산데요?,about_company
+차집사라고요?,about_company
+어디요?,about_company
+거기 어디라고요?,about_company
+어디 소속이세요?,about_company
+회사 이름이 뭐예요?,about_company
+거기 뭐 하는 곳이에요?,about_company
+차집사가 어떤 회사예요?,about_company
+업체명이요?,about_company
+차집사 처음 듣는데요?,about_company
+무슨 회사인데요?,about_company
+차집사 소속이에요?,about_company
+인증된 회사인가요?,about_company
+어느 지역이에요?,about_company
+그게 어떤 기관이에요?,about_company
+차집사 진짜 회사 맞나요?,about_company
+보험사 직영이에요?,about_company
+다이렉트랑 무슨 관계예요?,about_company
+차집사라고 검색하면 나오나요?,about_company
+법인인가요?,about_company
+어디 본사인가요?,about_company
+차집사 고객센터에요?,about_company
+중간 업체인가요?,about_company
+차집사 직영이에요?,about_company
+본사는 어디에 있어요?,about_company
+진짜 제휴사 맞아요?,about_company
+제휴된 플랫폼이에요?,about_company
+무슨 채널로 연락 주신 거예요?,about_company
+차집사 관련된 다른 정보 있을까요?,about_company
+실존 회사에요?,about_company
+고객센터인가요?,about_company
+사업자 등록 되어있어요?,about_company
+보험사랑 관련 있는 거예요?,about_company
+정부 등록된 곳이에요?,about_company
+ARS 연결은 어떻게 되는 건가요?,more_questions
+긴급출동도 가능한가요?,more_questions
+보장내용은 직접 확인 가능한가요?,more_questions
+상품은 몇 개 정도 있어요?,more_questions
+고객이 헷갈려 하진 않나요?,more_questions
+보험 바꾸는 거예요?,more_questions
+상담 받으려면 뭘 해야 돼요?,more_questions
+보장 금액은요?,more_questions
+입금은 언제 되는 거예요?,more_questions
+신차랑 갱신차 수수료 달라요?,more_questions
+고객이 보험사 선택도 가능한가요?,more_questions
+직접 청약은 누가 도와줘요?,more_questions
+기존 보험이랑 비교도 해주나요?,more_questions
+계약 변경은 어떻게 하나요?,more_questions
+청약서류는 어디로 보내야 하나요?,more_questions
+전산 등록은 자동으로 돼요?,more_questions
+차량 정보는 따로 입력하나요?,more_questions
+고객이 모바일로도 볼 수 있나요?,more_questions
+고객이 거부하면 어떻게 되나요?,more_questions
+상담 연결은 몇 분 정도 걸리나요?,more_questions
+사고 처리 안내도 포함되나요?,more_questions
+고객센터는 따로 운영하나요?,more_questions
+가입 완료 후 문자 안내 있나요?,more_questions
+보장 항목은 커스터마이징 되나요?,more_questions
+자동차 외 다른 보험도 취급하나요?,more_questions
+연결되면 상담원 배정은 자동인가요?,more_questions
+지역 상관없이 다 가능한가요?,more_questions
+실적은 어떻게 확인할 수 있어요?,more_questions
+고객명만 있어도 진행 가능한가요?,more_questions
+가입서류는 온라인으로 받나요?,more_questions
+출고 전 차량도 가능하죠?,more_questions
+직접 입력 가능한 시스템도 있나요?,more_questions
+견적서 출력도 가능해요?,more_questions
+개인정보 동의는 어떤 방식으로 받아요?,more_questions
+고객이 전화 안 받으면 어떻게 되죠?,more_questions
+같은 날 여러 건도 접수 가능해요?,more_questions
+고객 동의는 문자로 받을 수 있나요?,more_questions
+회사마다 조건 다른 건 설명되나요?,more_questions
+추가 인센티브 조건도 있나요?,more_questions
+시간 제한 같은 건 없죠?,more_questions
+오 그럼 괜찮겠는데요?,positive
+생각보다 괜찮네요,positive
+그 정도면 충분하죠,positive
+딱 제가 원하던 거네요,positive
+오 그런 게 있었네요,positive
+이야 괜찮은 조건이네요,positive
+괜히 고민했네요,positive
+딱 좋네요,positive
+아 그래요?,positive
+그래요?,positive
+네 명함 하나 보내놔주세요,positive
+명함 하나 보내놔주세요,positive
+명함 보내놔주세요,positive
+네 문자 하나 보내놔주세요,positive
+문자 하나 보내놔주세요,positive
+문자 보내놔주세요,positive
+아 그건가요?,positive
+그럼 진행해도 괜찮겠어요,positive
+조건 나쁘지 않네요,positive
+7%면 솔직히 괜찮죠,positive
+그럼 저도 한 번 해볼게요,positive
+고객분들도 좋아하시겠네요,positive
+이 정도면 충분한데요,positive
+괜찮은 거 같아요,positive
+생각보다 조건 괜찮네요,positive
+진작 알았으면 좋았을걸요,positive
+소개하기 딱 좋은 조건이네요,positive
+괜찮은 구조네요,positive
+쓸만하겠는데요?,positive
+혜택 좋네요,positive
+딱 기대한 수준이에요,positive
+나쁘지 않네요,positive
+이런 조건이면 추천하겠어요,positive
+부담 없겠네요,positive
+만족스럽네요,positive
+괜찮은 제안이에요,positive
+신뢰 가네요,positive
+고객 반응도 좋겠어요,positive
+편하겠어요,positive
+좋네요~,positive
+괜찮네요,positive
+7% 면 괜찮네요,positive
+더 많이 주네요,positive
+아 좋네요,positive
+오 좋네~,positive
+편하겠네요,positive
+그럼 편하긴 하겠네요,positive
+아 그런 게 있었어요?,positive
+괜찮은데요 이거,positive
+아니에요 괜찮습니다,rejection
+다음에 연락 주세요,rejection
+저 고객 응대 중이라서요,rejection
+안해요,rejection
+끊을게요,rejection
+그런 건 안 해요,rejection
+필요 없어요 지금은,rejection
+지금 전화 안돼요,rejection
+그만 끊을게요,rejection
+요새 안해요,rejection
+관심 없어요,rejection
+안 할게요,rejection
+됐어요,rejection
+관심 없어요,rejection
+다음에 해요,rejection
+지금 바빠요,rejection
+별로 안 끌리네요,rejection
+죄송한데 전화 걸지 마세요,rejection
+이런 건 잘 안 해요,rejection
+필요 없어요,rejection
+저 다른데 하고있다고요,rejection
+됐습니다,rejection
+일단 됐고요,rejection
+신경 쓸 여유 없어요,rejection
+고객들이 싫어해요,rejection
+저랑은 좀 안 맞아요,rejection
+별로네요,rejection
+시간 낭비 같은데요,rejection
+정중히 거절할게요,rejection
+안 합니다,rejection
+아유 안 해요,rejection
+이건 좀 아닌 것 같아요,rejection
+할 생각 없어요,rejection
+콜 그만 주세요,rejection
+전화 하지 마세요,rejection
+요즘 일 안 해요,rejection
+이런 거 그만 좀 해요,rejection
+짜증 나게,rejection
+필요 없다니까요,rejection
+그만 거세요,rejection
+바빠 죽겠는데 무슨...,rejection
+저 다른 데 하고 있어서 괜찮아요,other
+저 이미 거래하는 설계사 있어요,other
+저 지금 고객사랑만 하고 있어요,other
+저 고정 거래처가 있어서요,other
+저 계속 한 군데만 하고 있어서요,other
+저 이미 알아보고 있어서요,other
+저 다른데만 하기로 했어요,other
+저 그쪽은 안 쓰고 있어요,other
+저 제휴 있는 데만 써요,other
+저 다른 데 연결하고 있어요,other
+저 지금 하고 있는 데가 있어요,other
+저 이미 진행하는 데 있어요,other
+저 이미 하는 데 있어요,other
+저 계속 맡기던 곳이 있어서요,other
+저 이미 견적 받은 곳이 있어요,other
+저 따로 하는 데 있어요,other
+저 이미 하고 있어요,other
+저 이미 진행하는 대리점이 있어요,other
+저 연결해둔 쪽이 있어서요,other
+저 딴데 하고 있어요,other
+저 딴데랑 하고 있어요,other
+저 파트너사가 있어요,other
+저 기존 계약된 곳이 있어서요,other
+저 기존에 하는데가 있어요,other
+저 협력사가 있어요,other
+저 이미 하는데요,other
+저 한 군데랑만 계속 하고 있어서요,other
+저 주거래처가 이미 있어서요,other
+저 하던데가 있어요,other
+저 저희는 한 쪽이랑만 진행해요,other
+저 따로 맡긴 분이 계세요,other
+저 고정된 채널이 있어서요,other
+저 따로 팀이 있어요,other
+저 거래하고 있는 곳 만족하고 있어요,other
+저 기존 루트로만 진행하고 있어서요,other
+저 하던 데가 있습니다,other
+저 따로 있어서요,other
+저희 사정상 기존 거래처만 써요,other
+다른 데에 하고 있어요,other
+저 소개하는 데가 이미 있어요,other
+저 이미 계약된 곳이 있어서요,other
+저 다른 분 통해서 받고 있어서요,other
+저 이미 연결된 업체가 있어요,other
+저 그건 다른 쪽이랑 하고 있어서요,other
+저 고정적으로 맡기는 분이 계셔서요,other
+저 거래처 정해져 있어서 괜찮아요,other
+저 이런 건 따로 맡긴 데가 있어서요,other
+저 항상 맡기는 분이 계셔서요,other
+저 이미 정해진 루트로 하고 있어요,other
+저 그쪽은 이미 정해져 있어서요,other
+저 이미 믿고 맡기는 쪽이 있어요,other
+저 이런 건 기존 담당자 통해서 해서요,other
+저희는 내부적으로 정해진 곳만 써요,other
+저 이미 진행 중이라서요,other
+저 늘 거래하던 곳이 있어서요,other
+저 계속 맡기던 분이 계셔서요,other
+저 다른 팀에서 이미 하고 있어요,other
+저 이건 따로 진행 중이라 괜찮아요,other
+저 파트너 정해져 있어서요,other
+저 이미 요청 넣은 곳이 있어서요,other
+저 담당 대리점이 정해져 있어서요,other
+저 기존 루트로만 쓰기로 해서요,other
+저 항상 맡기는 채널이 있어서요,other
+저 기존에 쓰던 분이 계세요,other
+저 거래 방식이 정해져 있어서요,other
+저 이미 컨택된 업체가 있어서요,other
+저 루틴대로 처리하고 있어서요,other
+저 다른 대행사 통해서 진행 중이에요,other
+저 관계된 분이 따로 계셔서요,other
+저 담당자 통하지 않으면 어려워요,other
+저 다른 데랑 오래 거래 중이라서요,other
+저 다른 데에 요청해둔 상태예요,other
+저 다른 데랑만 계속 하고 있어요,other
+저 다른 데 위주로 해서요,other
+저 다른 데로 다 진행하고 있어서요,other
+저 다른 데도 많아서요,other
+저 다른 데도 있어서요,other
+저 다른 데 맡겨놨어요,other
+저 다른 데에서만 해요,other
+저 다른 데가 익숙해서요,other
+저 다른 데랑 오래 일했어요,other
+저 다른 데 주로 쓰고 있어서요,other
+저 다른 데에서 정리하고 있어서요,other
+저 다른 데 연결돼 있어서요,other
+저 다른 데도 제안 들어온 게 있어서요,other
+저 다른 데에 맡긴 게 있어서요,other
+저 다른 데 통해서만 하고 있어요,other
+저 다른 데 이미 소개받았어요,other
+저 다른 데랑 진행 중이라서요,other
+저 다른 데 믿고 써서요,other
+저 따로 하는 데 있어서요,other
+저 하던 데가 따로 있어요,other
+저 계속 하는 데가 있어서요,other
+저 정해진 하는 데가 있어요,other
+저 익숙한 하는 데랑만 해요,other
+저 자주 하는 데가 있어서요,other
+저 거래하던 하는 데가 있어서요,other
+저 오래된 하는 데가 있어서요,other
+저 편하게 하는 데가 있어서요,other
+저 만족하는 하는 데가 있어서요,other
+저 따로 정해진 하는 데 있어요,other
+저 주로 하는 데 통해서만 해요,other
+저 지정된 하는 데가 있어서요,other
+저 신뢰하는 하는 데가 있어서요,other
+저 담당하는 데 따로 있어서요,other
+저 늘 하는 데 있어서요,other
+저 그냥 하던 데 계속 써요,other
+저 하는 데 정해져 있어서요,other
+저 습관적으로 하던 데 있어서요,other
+저 바꿀 생각 없는 하는 데 있어서요,other
+이거 고객한테 어떻게 설명해야 돼요?,fallback
+고객한테 어떻게 전달하죠?,fallback
+명함 이미지로 주세요,fallback
+이미지로 저장해서 쓸 수 있나요?,fallback
+이거 서류 같은 거 있나요?,fallback
+카톡으로 고객이 신청할 수 있나요?,fallback
+고객이 직접 전화하면 되나요?,fallback
+상품 설명 자료 파일로 주세요,fallback
+고객이 뭘 입력해야 하나요?,fallback
+이거 고객이 신청 링크만 있으면 돼요?,fallback
+템플릿 같은 거 없어요?,fallback
+이거 말고 다른 상품도 있나요?,fallback
+상담원 연결은 어디서 해요?,fallback
+고객이랑 같이 있을 땐 어떻게 해야 돼요?,fallback
+고객이 거절하면 뭐라 해야 돼요?,fallback
+고객이 질문 많이 하면 어떻게 해요?,fallback
+콜센터 번호도 알려주세요,fallback
+보장 내용 문서로 주실 수 있나요?,fallback
+이거 공유해도 되는 거예요?,fallback
+담당자 번호도 같이 주세요,fallback
+문자 자동으로 보내지나요?,fallback
+고객 카톡으로 접수되나요?,fallback
+이거 저장은 어떻게 해요?,fallback
+고객이 다른 질문하면 연결되나요?,fallback
+카카오 채널 운영해요?,fallback
+명함은 언제 받아요?,fallback
+이거 제가 고객한테 어떻게 보내죠?,fallback
+URL 따로 받을 수 있나요?,fallback
+담당자랑 직접 얘기할 수 있어요?,fallback
+상담원한테 바로 연결 좀 해주세요,fallback
+상담원 연결은 어떻게 해요?,fallback
+이거 문자로도 받을 수 있어요?,fallback
+자료를 카톡으로 보내주실 수 있나요?,fallback
+이거 고객이 직접 신청하는 건가요?,fallback
+저 말고 팀장님이 해야 할 거 같아요,fallback
+명함 먼저 주실 수 있나요?,fallback
+그냥 링크 주세요,fallback
+카카오톡으로 돼요?,fallback
+문자 하나만 주세요,fallback
+뭐로 보내주시는 건데요?,fallback
+예 여보세요,greeting
+여보세요,	greeting
+예 어디세요?,	greeting
+예 누구시죠?,	greeting
+예 말씀하세요,	greeting
+어디에요?,	greeting
+누구세요?,	greeting
+네네 말씀하세요,	greeting
+전화 받았어요,	greeting
+전화 받았습니다, greeting
+예 안녕하세요, greeting
+안녕하세요, greeting
+예 홍길동입니다,greeting
+예 김민수입니다,greeting
+예 이지은입니다,greeting
+예 박재현입니다,greeting
+예 최유진입니다,greeting
+예 장도윤입니다,greeting
+예 정예린입니다,greeting
+예 한지훈입니다,greeting
+예 유소영입니다,greeting
+예 오승준입니다,greeting
+예 김나연입니다,greeting
+예 이승기입니다,greeting
+예 박지우입니다,greeting
+예 정다운입니다,greeting
+예 노지훈입니다,greeting
+예 송하윤입니다,greeting
+예 조민재입니다,greeting
+예 문지호입니다,greeting
+예 배서연입니다,greeting
+예 윤태훈입니다,greeting
+예 신예은입니다,greeting
+예 강하늘입니다,greeting
+예 서유리입니다,greeting
+예 최준영입니다,greeting
+예 안다영입니다,greeting
+예 김하윤입니다,greeting
+예 이다은입니다,greeting
+예 박지민입니다,greeting
+예 전지훈입니다,greeting
+예 남도현입니다,greeting
+예 장예원입니다,greeting
+예 황승민입니다,greeting
+예 백서진입니다,greeting
+예 하민우입니다,greeting
+예 임예린입니다,greeting
+예 조하늘입니다,greeting
+예 서정우입니다,greeting
+예 한예린입니다,greeting
+예 정서윤입니다,greeting
+예 최윤호입니다,greeting
+예 김도현입니다,greeting
+예 이예나입니다,greeting
+예 박수현입니다,greeting
+예 윤시우입니다,greeting
+예 문하진입니다,greeting
+예 유도경입니다,greeting
+예 오지훈입니다,greeting
+예 강지수입니다,greeting
+예 신소율입니다,greeting
+예 남하은입니다,greeting

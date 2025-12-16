@@ -1,0 +1,192 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "88a9374a-374a-443c-a12a-74e5ab4156df",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 40,
+      "y": 40
+    },
+    "ActionMetadata": {
+      "88a9374a-374a-443c-a12a-74e5ab4156df": {
+        "position": {
+          "x": 172.8,
+          "y": 35.2
+        },
+        "children": [
+          "978220ff-94b8-404d-b0b4-2dada7495147"
+        ],
+        "parameters": {
+          "TextToSpeechVoice": {
+            "languageCode": "ko-KR"
+          }
+        },
+        "overrideConsoleVoice": true,
+        "fragments": {
+          "SetContactData": "978220ff-94b8-404d-b0b4-2dada7495147"
+        },
+        "overrideLanguageAttribute": true
+      },
+      "978220ff-94b8-404d-b0b4-2dada7495147": {
+        "position": {
+          "x": 172.8,
+          "y": 35.2
+        },
+        "dynamicParams": []
+      },
+      "05ebb744-99bd-40db-bf16-ab6a77118109": {
+        "position": {
+          "x": 446.4,
+          "y": 34.4
+        },
+        "parameters": {
+          "PromptId": {
+            "displayName": "PromotionalCalls"
+          },
+          "LexV2Bot": {
+            "AliasArn": {
+              "displayName": "production",
+              "useLexBotDropdown": true,
+              "lexV2BotName": "FreeInputBotKorean"
+            }
+          }
+        },
+        "promptName": "PromotionalCalls",
+        "useLexBotDropdown": true,
+        "lexV2BotName": "FreeInputBotKorean",
+        "lexV2BotAliasName": "production",
+        "conditionMetadata": []
+      },
+      "58f4ee4f-8a66-456a-a09d-067b92bc44b3": {
+        "position": {
+          "x": 1047.2,
+          "y": 388
+        }
+      },
+      "3588c09b-75d6-44db-8e0a-500204123470": {
+        "position": {
+          "x": 701.6,
+          "y": 34.4
+        },
+        "dynamicParams": []
+      },
+      "aafc1faf-3619-4f76-a634-5af65f49b18d": {
+        "position": {
+          "x": 1032,
+          "y": 37.6
+        },
+        "parameters": {
+          "PromptId": {
+            "useDynamic": true
+          }
+        },
+        "useDynamic": true
+      }
+    },
+    "Annotations": [],
+    "name": "ContactFlowPrompt",
+    "description": "ContactFlowPrompt",
+    "type": "contactFlow",
+    "status": "published",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "TextToSpeechEngine": "Neural",
+        "TextToSpeechStyle": "None",
+        "TextToSpeechVoice": "Jihye"
+      },
+      "Identifier": "88a9374a-374a-443c-a12a-74e5ab4156df",
+      "Type": "UpdateContactTextToSpeechVoice",
+      "Transitions": {
+        "NextAction": "978220ff-94b8-404d-b0b4-2dada7495147",
+        "Errors": [
+          {
+            "NextAction": "05ebb744-99bd-40db-bf16-ab6a77118109",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LanguageCode": "ko-KR"
+      },
+      "Identifier": "978220ff-94b8-404d-b0b4-2dada7495147",
+      "Type": "UpdateContactData",
+      "Transitions": {
+        "NextAction": "05ebb744-99bd-40db-bf16-ab6a77118109",
+        "Errors": [
+          {
+            "NextAction": "05ebb744-99bd-40db-bf16-ab6a77118109",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "PromptId": "arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/prompt/f61bb4fe-f0bb-47a9-a4ed-80f0e5c3025c",
+        "LexV2Bot": {
+          "AliasArn": "arn:aws:lex:ap-northeast-1:600818507157:bot-alias/ZUZDJPUFTG/LEMPGLKGYI"
+        }
+      },
+      "Identifier": "05ebb744-99bd-40db-bf16-ab6a77118109",
+      "Type": "ConnectParticipantWithLexBot",
+      "Transitions": {
+        "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+        "Errors": [
+          {
+            "NextAction": "3588c09b-75d6-44db-8e0a-500204123470",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+      "Type": "EndFlowExecution",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "Attributes": {
+          "PromptPlayer": "arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/prompt/f92d03f8-5e71-44ad-ac60-cbba70d8864c"
+        },
+        "TargetContact": "Current"
+      },
+      "Identifier": "3588c09b-75d6-44db-8e0a-500204123470",
+      "Type": "UpdateContactAttributes",
+      "Transitions": {
+        "NextAction": "aafc1faf-3619-4f76-a634-5af65f49b18d",
+        "Errors": [
+          {
+            "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "PromptId": "$.Attributes.PromptPlayer"
+      },
+      "Identifier": "aafc1faf-3619-4f76-a634-5af65f49b18d",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+        "Errors": [
+          {
+            "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}

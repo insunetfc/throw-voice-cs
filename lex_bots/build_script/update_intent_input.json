@@ -1,0 +1,24 @@
+{
+  "botId": "ZUZDJPUFTG",
+  "botVersion": "DRAFT",
+  "localeId": "ko_KR",
+  "intentId": "6ES2AIAS5J",
+  "intentName": "FreeInputIntent",
+  "sampleUtterances": [
+    {
+      "utterance": "무엇이든 말해주세요"
+    }
+  ],
+  "slotPriorities": [
+    {
+      "slotId": "TMGFQJ2O8Z",
+      "priority": 1
+    }
+  ],
+  "dialogCodeHook": {
+    "enabled": false
+  },
+  "fulfillmentCodeHook": {
+    "enabled": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "PolicyNames": [
+        "AmazonConnectServiceDirectoryServiceAccess",
+        "HighVolumeOutboundCommunicationAccess",
+        "LexBotAnalyticsAccess",
+        "LexBotBuildingExperienceAccess"
+    ]
+}

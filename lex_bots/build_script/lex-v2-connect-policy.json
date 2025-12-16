@@ -1,0 +1,16 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "LexV2CrossRegion",
+      "Effect": "Allow",
+      "Action": [
+        "lex:RecognizeText",
+        "lex:StartConversation"
+      ],
+      "Resource": [
+        "arn:aws:lex:ap-northeast-1:600818507157:bot-alias/ZUZDJPUFTG/LEMPGLKGYI"
+      ]
+    }
+  ]
+}

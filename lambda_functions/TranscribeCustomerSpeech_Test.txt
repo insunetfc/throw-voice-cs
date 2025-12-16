@@ -1,0 +1,32 @@
+"Busy"
+{
+  "invocationSource": "DialogCodeHook",
+  "inputTranscript": "지금 바빠요",
+  "sessionState": { "intent": { "name": "TestIntent", "state": "InProgress", "slots": {} }, "sessionAttributes": {} }
+}
+
+"Interested"
+{
+  "invocationSource": "DialogCodeHook",
+  "inputTranscript": "지금 바꿔요",
+  "sessionState": { "intent": { "name": "TestIntent", "state": "InProgress", "slots": {} }, "sessionAttributes": {} }
+}
+
+"Transfer"
+{
+  "invocationSource": "DialogCodeHook",
+  "inputTranscript": "상담원 연결해줘",
+  "sessionState": { "intent": { "name": "TestIntent", "state": "InProgress", "slots": {} }, "sessionAttributes": {} }
+}
+
+"TranscribeKVS"
+{
+  "sessionState": { "intent": { "name": "CaptureUtterance", "slots": {} } },
+  "invocationSource": "DialogCodeHook",
+  "requestAttributes": {
+    "x-amz-lex:connect-contact-id": "c303d7c2-39bb-47ab-95b4-dd5644851738",
+    "x-amz-lex:connect-instance-id": "5b83741e-7823-4d70-952a-519d1ac05e63"
+  },
+  "inputTranscript": ""
+}
+

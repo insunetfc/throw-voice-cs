@@ -1,0 +1,16 @@
+{
+    "ContactFlow": {
+        "Arn": "arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/contact-flow/f13b3615-7487-4da7-8f47-e3f42a66d2b2",
+        "Id": "f13b3615-7487-4da7-8f47-e3f42a66d2b2",
+        "Name": "Default agent hold",
+        "Type": "AGENT_HOLD",
+        "State": "ACTIVE",
+        "Status": "PUBLISHED",
+        "Description": "Audio played for the agent when on hold",
+        "Content": "{\"Version\":\"2019-10-30\",\"StartAction\":\"1a34ecf3-77ff-46a7-b210-38a1a980127b\",\"Metadata\":{\"entryPointPosition\":{\"x\":75,\"y\":20},\"snapToGrid\":false,\"ActionMetadata\":{\"1a34ecf3-77ff-46a7-b210-38a1a980127b\":{\"position\":{\"x\":258,\"y\":66},\"audio\":[{\"type\":\"Text\",\"tts\":\"<speak>You are on hold <break time=\\\"10s\\\"/></speak>\",\"$$hashKey\":\"01J\",\"ttsType\":\"ssml\"}],\"timeoutUnit\":{\"display\":\"Minutes\",\"value\":\"min\"}}}},\"Actions\":[{\"Identifier\":\"1a34ecf3-77ff-46a7-b210-38a1a980127b\",\"Parameters\":{\"Messages\":[{\"SSML\":\"<speak>You are on hold <break time=\\\"10s\\\"/></speak>\"}]},\"Transitions\":{\"Errors\":[],\"Conditions\":[]},\"Type\":\"MessageParticipantIteratively\"}]}",
+        "Tags": {},
+        "FlowContentSha256": "0606386965ce16ed4c6df2b0d3d9851c0ce8758a24c3ef607f1fb87fbf023688",
+        "LastModifiedTime": "2025-07-24T19:26:19.556000+09:00",
+        "LastModifiedRegion": "ap-northeast-2"
+    }
+}

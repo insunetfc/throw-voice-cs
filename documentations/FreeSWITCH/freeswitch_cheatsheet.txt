@@ -1,0 +1,28 @@
+FreeSWITCH EC2 Command Cheat Sheet
+
+1. SSH into EC2:
+ssh -i yourkey.pem ubuntu@EC2_PUBLIC_IP
+
+2. Start FreeSWITCH service:
+sudo systemctl start freeswitch
+sudo systemctl status freeswitch
+sudo systemctl enable freeswitch
+
+3. Run FreeSWITCH manually (if built from source):
+sudo freeswitch -nc
+sudo freeswitch -nonat
+
+4. Enter FreeSWITCH CLI:
+sudo /usr/local/freeswitch/bin/fs_cli
+
+5. Useful FreeSWITCH commands inside fs_cli:
+status
+sofia status
+sofia status profile internal
+sofia status profile external
+sofia status profile webrtc
+reloadxml
+sofia profile internal restart
+
+6. Check if WebSocket port is listening:
+ss -lntup | grep 5066

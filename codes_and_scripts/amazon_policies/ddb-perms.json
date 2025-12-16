@@ -1,0 +1,29 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ConnectPromptCacheRW",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DescribeTable"
+      ],
+      "Resource": "arn:aws:dynamodb:ap-northeast-2:905418424724:table/ConnectPromptCache"
+    },
+    {
+      "Sid": "IfYouUseQueryOrScan",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:Query",
+        "dynamodb:Scan"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:ap-northeast-2:905418424724:table/ConnectPromptCache",
+        "arn:aws:dynamodb:ap-northeast-2:905418424724:table/ConnectPromptCache/index/*"
+      ]
+    }
+  ]
+}

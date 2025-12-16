@@ -1,0 +1,11 @@
+sudo nano ddb-perms.json
+aws iam put-role-policy   --role-name S3Role   --policy-name ConnectPromptCacheAccess   --policy-document file://ddb-perms.json
+
+sudo nano allow_selfinvoke.json
+aws iam put-role-policy \
+  --role-name S3Role \
+  --policy-name AllowSelfInvoke \
+  --policy-document file://allow_selfinvoke.json
+
+sudo nano s3_access.json 
+aws iam put-role-policy   --role-name S3Role   --policy-name S3AccessTTS   --policy-document file://s3_access.json

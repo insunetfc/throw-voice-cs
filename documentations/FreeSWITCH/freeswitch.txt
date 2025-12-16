@@ -1,0 +1,32 @@
+0) RTC Backend: I have changed only bridge.py in rtc_backend for _iter_ws_audio and added function fs_bridge_media.
+
+1) Edit Dialplan. IP are being pointed to local EC2 throw-freeswitch private IP (172.31.45.123:8000). To change:
+
+sudo nano /usr/local/freeswitch/conf/vanilla/dialplan/default.xml
+
+Change:     <action application="set"
+            data="api_on_answer=uuid_audio_stream ${uuid} start wss://172.31.45.123:8000/ws/fs-bridge/${uuid} mixed 16k ${rtc_metadata}"/>
+
+to:      <action application="set"
+            data="api_on_answer=uuid_audio_stream ${uuid} start wss://rtc-api.throw.im/ws/fs-bridge/${uuid} mixed 16k ${rtc_metadata}"/>
+
+2) Reload Dialplan
+sudo /usr/local/freeswitch/bin/fs_cli
+In freeswitch: reloadxml
+
+3) SIP Registration Details
+user: 1003
+Pass: 1234
+Domain: 43.202.112.167
+Transport: UDP
+
+4) Activate venv
+source ~/venv/bin/activate
+Private IP: 172.31.45.123
+Port: 8000
+
+5) Environments
+Environments in: :~/rtc_backend/rtc-backend/.env
+
+6) Calling
+Dial: 1003

@@ -1,0 +1,229 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "88a9374a-374a-443c-a12a-74e5ab4156df",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 40,
+      "y": 40
+    },
+    "ActionMetadata": {
+      "f6a16b40-3bbb-4eee-967c-ba8714c5a3a1": {
+        "position": {
+          "x": 645.6,
+          "y": 248
+        }
+      },
+      "aafc1faf-3619-4f76-a634-5af65f49b18d": {
+        "position": {
+          "x": 798.4,
+          "y": 28.8
+        },
+        "parameters": {
+          "PromptId": {
+            "useDynamic": true
+          }
+        },
+        "useDynamic": true
+      },
+      "88a9374a-374a-443c-a12a-74e5ab4156df": {
+        "position": {
+          "x": 172.8,
+          "y": 35.2
+        },
+        "children": [
+          "7bb9a2a0-d0f1-4aad-9459-a28e089e9077"
+        ],
+        "parameters": {
+          "TextToSpeechVoice": {
+            "languageCode": "ko-KR"
+          }
+        },
+        "overrideConsoleVoice": true,
+        "fragments": {
+          "SetContactData": "7bb9a2a0-d0f1-4aad-9459-a28e089e9077"
+        },
+        "overrideLanguageAttribute": true
+      },
+      "7bb9a2a0-d0f1-4aad-9459-a28e089e9077": {
+        "position": {
+          "x": 172.8,
+          "y": 35.2
+        },
+        "dynamicParams": []
+      },
+      "58f4ee4f-8a66-456a-a09d-067b92bc44b3": {
+        "position": {
+          "x": 1047.2,
+          "y": 388
+        }
+      },
+      "ccd605ec-3c33-4593-9a29-ee41d051ec14": {
+        "position": {
+          "x": 432.8,
+          "y": 40.8
+        },
+        "parameters": {
+          "Attributes": {
+            "PromptPlayment": {
+              "useDynamic": true
+            }
+          }
+        },
+        "dynamicParams": [
+          "PromptPlayment"
+        ]
+      },
+      "6f332a2d-173b-452a-86df-c1a721740828": {
+        "position": {
+          "x": 177.6,
+          "y": 276
+        },
+        "parameters": {
+          "LambdaFunctionARN": {
+            "displayName": "InvokeBotLambda"
+          },
+          "LambdaInvocationAttributes": {
+            "Details.Parameters.chat_on": {
+              "useJson": true
+            },
+            "prompt_arn": {
+              "useDynamic": true
+            }
+          }
+        },
+        "dynamicMetadata": {
+          "action": false,
+          "Details.Parameters.user_input": false,
+          "Details.Parameters.chat_on": false,
+          "prompt_arn": true
+        }
+      }
+    },
+    "Annotations": [],
+    "name": "ContactFlowPrompt",
+    "description": "ContactFlowPrompt",
+    "type": "contactFlow",
+    "status": "published",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "Text": "Set attribute failed"
+      },
+      "Identifier": "f6a16b40-3bbb-4eee-967c-ba8714c5a3a1",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+        "Errors": [
+          {
+            "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "PromptId": "$.Attributes.PromptPlayment"
+      },
+      "Identifier": "aafc1faf-3619-4f76-a634-5af65f49b18d",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+        "Errors": [
+          {
+            "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "TextToSpeechEngine": "Neural",
+        "TextToSpeechStyle": "None",
+        "TextToSpeechVoice": "Jihye"
+      },
+      "Identifier": "88a9374a-374a-443c-a12a-74e5ab4156df",
+      "Type": "UpdateContactTextToSpeechVoice",
+      "Transitions": {
+        "NextAction": "7bb9a2a0-d0f1-4aad-9459-a28e089e9077",
+        "Errors": [
+          {
+            "NextAction": "6f332a2d-173b-452a-86df-c1a721740828",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LanguageCode": "ko-KR"
+      },
+      "Identifier": "7bb9a2a0-d0f1-4aad-9459-a28e089e9077",
+      "Type": "UpdateContactData",
+      "Transitions": {
+        "NextAction": "6f332a2d-173b-452a-86df-c1a721740828",
+        "Errors": [
+          {
+            "NextAction": "6f332a2d-173b-452a-86df-c1a721740828",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+      "Type": "EndFlowExecution",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "Attributes": {
+          "PromptPlayment": "$.External.prompt_arn"
+        },
+        "TargetContact": "Current"
+      },
+      "Identifier": "ccd605ec-3c33-4593-9a29-ee41d051ec14",
+      "Type": "UpdateContactAttributes",
+      "Transitions": {
+        "NextAction": "aafc1faf-3619-4f76-a634-5af65f49b18d",
+        "Errors": [
+          {
+            "NextAction": "f6a16b40-3bbb-4eee-967c-ba8714c5a3a1",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LambdaFunctionARN": "arn:aws:lambda:ap-northeast-2:600818507157:function:InvokeBotLambda",
+        "InvocationTimeLimitSeconds": "8",
+        "InvocationType": "SYNCHRONOUS",
+        "LambdaInvocationAttributes": {
+          "action": "start",
+          "Details.Parameters.user_input": "안녕하세요",
+          "Details.Parameters.chat_on": true,
+          "prompt_arn": "$.External.prompt_arn"
+        },
+        "ResponseValidation": {
+          "ResponseType": "JSON"
+        }
+      },
+      "Identifier": "6f332a2d-173b-452a-86df-c1a721740828",
+      "Type": "InvokeLambdaFunction",
+      "Transitions": {
+        "NextAction": "ccd605ec-3c33-4593-9a29-ee41d051ec14",
+        "Errors": [
+          {
+            "NextAction": "58f4ee4f-8a66-456a-a09d-067b92bc44b3",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}

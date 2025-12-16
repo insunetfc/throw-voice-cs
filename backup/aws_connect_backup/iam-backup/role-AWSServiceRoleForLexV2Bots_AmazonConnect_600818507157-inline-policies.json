@@ -1,0 +1,6 @@
+{
+    "PolicyNames": [
+        "AmazonLexServicePolicy-AmazonConnect_600818507157-LogCloudWatchPolicy",
+        "AmazonLexV2ComprehendPolicy"
+    ]
+}

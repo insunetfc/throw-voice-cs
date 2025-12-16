@@ -1,0 +1,8 @@
+{
+    "AttachedPolicies": [
+        {
+            "PolicyName": "ServiceQuotasServiceRolePolicy",
+            "PolicyArn": "arn:aws:iam::aws:policy/aws-service-role/ServiceQuotasServiceRolePolicy"
+        }
+    ]
+}

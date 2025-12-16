@@ -1,0 +1,8 @@
+{
+    "AttachedPolicies": [
+        {
+            "PolicyName": "AmazonConnectServiceEmailAccess",
+            "PolicyArn": "arn:aws:iam::600818507157:policy/service-role/AmazonConnectServiceEmailAccess"
+        }
+    ]
+}

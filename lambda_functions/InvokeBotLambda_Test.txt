@@ -1,0 +1,73 @@
+"Approve"
+{
+  "Details": {
+    "Parameters": {
+      "action": "approve_both",
+      "inbox_id": "cdbbca9824874951a3e20f6746d507bd"
+    },
+    "ContactData": {
+      "ContactId": "approval-test-002"
+    }
+  }
+}
+
+"Check Full"
+{
+  "action": "check_full_ready",
+  "Details": { "Parameters": {
+    "action": "check_full_ready",
+    "job_bucket": "tts-bucket-250810",
+    "job_key": "connect/sessions/full_cache/0dde62d897db4d4f.wav"
+  }}
+}
+
+"Debug Cache"
+{
+  "Details": {
+    "Parameters": {
+      "action": "debug_cache_miss",
+      "user_input": "제가 바빠요"
+    },
+    "ContactData": {
+      "ContactId": "debug-test-001"
+    }
+  }
+}
+
+"Hit Cache"
+{
+  "Details": {
+    "Parameters": {"action": "voice_response"},
+    "ContactData": {
+      "ContactId": "test-005", 
+      "CustomerInput": "바빠요"
+    }
+  },
+  "locale": "ko-KR"
+}
+
+"Synthesize Filler"
+{
+  "action": "synthesize_full_with_filler",
+  "text": "지금 바빠요."
+}
+
+"Trigger SMS"
+{
+  "Details": {
+    "Parameters": {
+      "action": "trigger_sms",
+      "user_speech": "지금 바빠요, 나중에 해주세요",
+      "neutral_type": "busy_response"
+    },
+    "ContactData": {
+      "ContactId": "sms-test-001"
+    }
+  }
+}
+
+"Warmup"
+{
+  "action": "warmup",
+  "text": "지금 바빠요."
+}

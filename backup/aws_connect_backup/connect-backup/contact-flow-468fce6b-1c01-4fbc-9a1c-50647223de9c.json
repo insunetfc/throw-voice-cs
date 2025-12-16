@@ -1,0 +1,16 @@
+{
+    "ContactFlow": {
+        "Arn": "arn:aws:connect:ap-northeast-2:600818507157:instance/eefed165-54dc-428e-a0f1-02c2ec35a22e/contact-flow/468fce6b-1c01-4fbc-9a1c-50647223de9c",
+        "Id": "468fce6b-1c01-4fbc-9a1c-50647223de9c",
+        "Name": "Default agent transfer",
+        "Type": "AGENT_TRANSFER",
+        "State": "ACTIVE",
+        "Status": "PUBLISHED",
+        "Description": "Default flow to transfer to an agent.",
+        "Content": "{\"Version\":\"2019-10-30\",\"StartAction\":\"5e641eb0-0e27-4f78-9e3e-5d8cd35a4ac5\",\"Metadata\":{\"entryPointPosition\":{\"x\":15,\"y\":103},\"snapToGrid\":false,\"name\":\"Default agent transfer\",\"description\":\"Default flow to transfer to an agent.\",\"type\":\"agentTransfer\",\"status\":\"published\",\"hash\":\"be2929544e5a92e18a887477067dc4ede9822e6382340e08f78fb03b3caa3e90\",\"ActionMetadata\":{\"5e641eb0-0e27-4f78-9e3e-5d8cd35a4ac5\":{\"position\":{\"x\":144,\"y\":103},\"useDynamic\":false},\"ea49dc11-0478-4508-b018-5703eda402dd\":{\"position\":{\"x\":388,\"y\":98},\"useDynamic\":true,\"queue\":\"Agent.ARN\"},\"610ed3fd-460f-491c-b250-a686105af077\":{\"position\":{\"x\":646.8000000119209,\"y\":92},\"useDynamic\":false},\"f5c21661-329c-4d34-afe6-143703a7a34f\":{\"position\":{\"x\":870,\"y\":258},\"useDynamic\":false},\"d5d82a97-0a9a-40f1-9dde-d26f56db7ff2\":{\"position\":{\"x\":1068,\"y\":98}}}},\"Actions\":[{\"Identifier\":\"5e641eb0-0e27-4f78-9e3e-5d8cd35a4ac5\",\"Parameters\":{\"Text\":\"Transferring now...\"},\"Transitions\":{\"NextAction\":\"ea49dc11-0478-4508-b018-5703eda402dd\",\"Errors\":[],\"Conditions\":[]},\"Type\":\"MessageParticipant\"},{\"Identifier\":\"ea49dc11-0478-4508-b018-5703eda402dd\",\"Parameters\":{\"AgentId\":\"$.Agent.ARN\"},\"Transitions\":{\"NextAction\":\"610ed3fd-460f-491c-b250-a686105af077\",\"Errors\":[{\"NextAction\":\"f5c21661-329c-4d34-afe6-143703a7a34f\",\"ErrorType\":\"NoMatchingError\"}],\"Conditions\":[]},\"Type\":\"UpdateContactTargetQueue\"},{\"Identifier\":\"610ed3fd-460f-491c-b250-a686105af077\",\"Transitions\":{\"NextAction\":\"f5c21661-329c-4d34-afe6-143703a7a34f\",\"Errors\":[{\"NextAction\":\"f5c21661-329c-4d34-afe6-143703a7a34f\",\"ErrorType\":\"NoMatchingError\"},{\"NextAction\":\"f5c21661-329c-4d34-afe6-143703a7a34f\",\"ErrorType\":\"QueueAtCapacity\"}],\"Conditions\":[]},\"Type\":\"TransferContactToQueue\"},{\"Identifier\":\"f5c21661-329c-4d34-afe6-143703a7a34f\",\"Parameters\":{\"Text\":\"Failed to transfer.\"},\"Transitions\":{\"NextAction\":\"d5d82a97-0a9a-40f1-9dde-d26f56db7ff2\",\"Errors\":[],\"Conditions\":[]},\"Type\":\"MessageParticipant\"},{\"Identifier\":\"d5d82a97-0a9a-40f1-9dde-d26f56db7ff2\",\"Type\":\"DisconnectParticipant\",\"Parameters\":{},\"Transitions\":{}}]}",
+        "Tags": {},
+        "FlowContentSha256": "e7ad18559aa1c08f0065fc884ed8da34f799202353495d956ef4cc286cf794db",
+        "LastModifiedTime": "2025-07-24T19:26:19.979000+09:00",
+        "LastModifiedRegion": "ap-northeast-2"
+    }
+}

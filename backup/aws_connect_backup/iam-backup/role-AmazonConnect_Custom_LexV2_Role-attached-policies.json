@@ -1,0 +1,8 @@
+{
+    "AttachedPolicies": [
+        {
+            "PolicyName": "AmazonConnectLexV2AccessPolicy",
+            "PolicyArn": "arn:aws:iam::600818507157:policy/AmazonConnectLexV2AccessPolicy"
+        }
+    ]
+}

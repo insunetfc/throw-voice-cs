@@ -1,0 +1,501 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "f928a40d-c71e-402b-b684-ee59d9a1c8e1",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": -45.6,
+      "y": -113.6
+    },
+    "ActionMetadata": {
+      "f928a40d-c71e-402b-b684-ee59d9a1c8e1": {
+        "position": {
+          "x": -108,
+          "y": -6.4
+        }
+      },
+      "88a9374a-374a-443c-a12a-74e5ab4156df": {
+        "position": {
+          "x": -103.2,
+          "y": 175.2
+        },
+        "children": [
+          "5a549b68-e628-4d2c-92a3-390b8e16d186"
+        ],
+        "parameters": {
+          "TextToSpeechVoice": {
+            "languageCode": "ko-KR"
+          }
+        },
+        "overrideConsoleVoice": true,
+        "fragments": {
+          "SetContactData": "5a549b68-e628-4d2c-92a3-390b8e16d186"
+        },
+        "overrideLanguageAttribute": true
+      },
+      "5a549b68-e628-4d2c-92a3-390b8e16d186": {
+        "position": {
+          "x": -103.2,
+          "y": 175.2
+        },
+        "dynamicParams": []
+      },
+      "15955994-ad03-4f19-b876-0d8f7964c90f": {
+        "position": {
+          "x": -104.8,
+          "y": 388.8
+        },
+        "parameters": {
+          "PromptId": {
+            "displayName": "PromotionalCalls"
+          },
+          "LexV2Bot": {
+            "AliasArn": {
+              "displayName": "production",
+              "useLexBotDropdown": true,
+              "lexV2BotName": "Placa_CallBot"
+            }
+          }
+        },
+        "promptName": "PromotionalCalls",
+        "useLexBotDropdown": true,
+        "lexV2BotName": "Placa_CallBot",
+        "lexV2BotAliasName": "production",
+        "conditionMetadata": [
+          {
+            "id": "01d6c616-1e1b-4c7b-b183-24713a030674",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "CaptureUtterance"
+          }
+        ]
+      },
+      "EndCallNeutral": {
+        "position": {
+          "x": 881.6,
+          "y": 710.4
+        },
+        "isFriendlyName": true
+      },
+      "121dae75-850c-4576-aa00-636114fd55fc": {
+        "position": {
+          "x": 176,
+          "y": -11.2
+        },
+        "parameters": {
+          "LambdaFunctionARN": {
+            "displayName": "InvokeBotLambda"
+          },
+          "LambdaInvocationAttributes": {
+            "Details.Parameters.user_input": {
+              "useDynamic": true
+            },
+            "Details.Parameters.barge_in_happened": {
+              "useDynamic": true
+            }
+          }
+        },
+        "dynamicMetadata": {
+          "action": false,
+          "Details.Parameters.user_input": true,
+          "Details.Parameters.barge_in_happened": true
+        }
+      },
+      "Check Continue Conversation": {
+        "position": {
+          "x": -100,
+          "y": 676
+        },
+        "isFriendlyName": true,
+        "parameters": {
+          "PromptId": {
+            "displayName": "Silent"
+          },
+          "LexV2Bot": {
+            "AliasArn": {
+              "displayName": "production",
+              "useLexBotDropdown": true,
+              "lexV2BotName": "Placa_CallBot"
+            }
+          }
+        },
+        "promptName": "Silent",
+        "useLexBotDropdown": true,
+        "lexV2BotName": "Placa_CallBot",
+        "lexV2BotAliasName": "production",
+        "conditionMetadata": [
+          {
+            "id": "ef57103c-cef5-438f-b661-65337f0733c5",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "CaptureUtterance"
+          }
+        ]
+      },
+      "387097b6-9c4c-45ce-bd36-9acdb4b7d10c": {
+        "position": {
+          "x": 454.4,
+          "y": -4
+        },
+        "parameters": {
+          "Media": {
+            "Uri": {
+              "useDynamic": true
+            }
+          }
+        },
+        "useDynamic": true
+      },
+      "EndCallPositive": {
+        "position": {
+          "x": 495.2,
+          "y": 710.4
+        },
+        "isFriendlyName": true
+      },
+      "5ceb7a68-b187-48d6-ac52-6009a882288c": {
+        "position": {
+          "x": 1333.6,
+          "y": 963.2
+        }
+      },
+      "Response Type Block": {
+        "position": {
+          "x": 181.6,
+          "y": 212
+        },
+        "isFriendlyName": true,
+        "conditionMetadata": [
+          {
+            "id": "a40e4499-5d6d-4373-9825-771b999038fa",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "true"
+          },
+          {
+            "id": "dff55e1f-fca4-4b0c-8884-54b1b33ee31a",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "false"
+          }
+        ]
+      },
+      "1dabe2c7-b646-49c0-824c-293b8efbe742": {
+        "position": {
+          "x": 951.2,
+          "y": 518.4
+        }
+      },
+      "Play Neutral Message": {
+        "position": {
+          "x": 510.4,
+          "y": 516.8
+        },
+        "isFriendlyName": true,
+        "parameters": {
+          "Media": {
+            "Uri": {
+              "useDynamic": true
+            }
+          }
+        },
+        "useDynamic": true
+      }
+    },
+    "Annotations": [],
+    "name": "CustomerFeedback",
+    "description": "ChatStreamFlow",
+    "type": "contactFlow",
+    "status": "published",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "FlowLoggingBehavior": "Enabled"
+      },
+      "Identifier": "f928a40d-c71e-402b-b684-ee59d9a1c8e1",
+      "Type": "UpdateFlowLoggingBehavior",
+      "Transitions": {
+        "NextAction": "88a9374a-374a-443c-a12a-74e5ab4156df"
+      }
+    },
+    {
+      "Parameters": {
+        "TextToSpeechVoice": "Seoyeon",
+        "TextToSpeechEngine": "Neural",
+        "TextToSpeechStyle": "None"
+      },
+      "Identifier": "88a9374a-374a-443c-a12a-74e5ab4156df",
+      "Type": "UpdateContactTextToSpeechVoice",
+      "Transitions": {
+        "NextAction": "5a549b68-e628-4d2c-92a3-390b8e16d186",
+        "Errors": [
+          {
+            "NextAction": "15955994-ad03-4f19-b876-0d8f7964c90f",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LanguageCode": "ko-KR"
+      },
+      "Identifier": "5a549b68-e628-4d2c-92a3-390b8e16d186",
+      "Type": "UpdateContactData",
+      "Transitions": {
+        "NextAction": "15955994-ad03-4f19-b876-0d8f7964c90f",
+        "Errors": [
+          {
+            "NextAction": "15955994-ad03-4f19-b876-0d8f7964c90f",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "PromptId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/prompt/3410a9d0-7f53-487f-9799-750cd1be4e18",
+        "LexV2Bot": {
+          "AliasArn": "arn:aws:lex:ap-northeast-2:905418424724:bot-alias/ENOV0CLDHS/LPAEZPXVLI"
+        }
+      },
+      "Identifier": "15955994-ad03-4f19-b876-0d8f7964c90f",
+      "Type": "ConnectParticipantWithLexBot",
+      "Transitions": {
+        "NextAction": "121dae75-850c-4576-aa00-636114fd55fc",
+        "Conditions": [
+          {
+            "NextAction": "121dae75-850c-4576-aa00-636114fd55fc",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "CaptureUtterance"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "121dae75-850c-4576-aa00-636114fd55fc",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "121dae75-850c-4576-aa00-636114fd55fc",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Media": {
+          "Uri": "s3://tts-bucket-250810/neutral/call_end/02.wav",
+          "SourceType": "S3",
+          "MediaType": "Audio"
+        }
+      },
+      "Identifier": "EndCallNeutral",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "5ceb7a68-b187-48d6-ac52-6009a882288c",
+        "Errors": [
+          {
+            "NextAction": "5ceb7a68-b187-48d6-ac52-6009a882288c",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LambdaFunctionARN": "arn:aws:lambda:ap-northeast-2:905418424724:function:InvokeBotLambda",
+        "InvocationTimeLimitSeconds": "5",
+        "InvocationType": "SYNCHRONOUS",
+        "LambdaInvocationAttributes": {
+          "action": "voice_response",
+          "Details.Parameters.user_input": "$.Lex.Slots.UserInput",
+          "Details.Parameters.barge_in_happened": "$.Attributes.barge_in_happened"
+        },
+        "ResponseValidation": {
+          "ResponseType": "JSON"
+        }
+      },
+      "Identifier": "121dae75-850c-4576-aa00-636114fd55fc",
+      "Type": "InvokeLambdaFunction",
+      "Transitions": {
+        "NextAction": "Response Type Block",
+        "Errors": [
+          {
+            "NextAction": "EndCallNeutral",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "PromptId": "arn:aws:connect:ap-northeast-2:905418424724:instance/5b83741e-7823-4d70-952a-519d1ac05e63/prompt/d3104392-fc50-46f9-9147-c86d64ae8147",
+        "LexV2Bot": {
+          "AliasArn": "arn:aws:lex:ap-northeast-2:905418424724:bot-alias/ENOV0CLDHS/LPAEZPXVLI"
+        }
+      },
+      "Identifier": "Check Continue Conversation",
+      "Type": "ConnectParticipantWithLexBot",
+      "Transitions": {
+        "NextAction": "121dae75-850c-4576-aa00-636114fd55fc",
+        "Conditions": [
+          {
+            "NextAction": "121dae75-850c-4576-aa00-636114fd55fc",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "CaptureUtterance"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "EndCallPositive",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "121dae75-850c-4576-aa00-636114fd55fc",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Media": {
+          "Uri": "$.External.setAttributes.AudioS3Url0",
+          "SourceType": "S3",
+          "MediaType": "Audio"
+        }
+      },
+      "Identifier": "387097b6-9c4c-45ce-bd36-9acdb4b7d10c",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "Check Continue Conversation",
+        "Errors": [
+          {
+            "NextAction": "Check Continue Conversation",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Media": {
+          "Uri": "s3://tts-bucket-250810/neutral/call_end/01.wav",
+          "SourceType": "S3",
+          "MediaType": "Audio"
+        }
+      },
+      "Identifier": "EndCallPositive",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "1dabe2c7-b646-49c0-824c-293b8efbe742",
+        "Errors": [
+          {
+            "NextAction": "5ceb7a68-b187-48d6-ac52-6009a882288c",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "5ceb7a68-b187-48d6-ac52-6009a882288c",
+      "Type": "EndFlowExecution",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "ComparisonValue": "$.External.setAttributes.cache_hit"
+      },
+      "Identifier": "Response Type Block",
+      "Type": "Compare",
+      "Transitions": {
+        "NextAction": "5ceb7a68-b187-48d6-ac52-6009a882288c",
+        "Conditions": [
+          {
+            "NextAction": "387097b6-9c4c-45ce-bd36-9acdb4b7d10c",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "true"
+              ]
+            }
+          },
+          {
+            "NextAction": "Play Neutral Message",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "false"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "5ceb7a68-b187-48d6-ac52-6009a882288c",
+            "ErrorType": "NoMatchingCondition"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "문자 메시지를 보냈습니다."
+      },
+      "Identifier": "1dabe2c7-b646-49c0-824c-293b8efbe742",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "5ceb7a68-b187-48d6-ac52-6009a882288c",
+        "Errors": [
+          {
+            "NextAction": "5ceb7a68-b187-48d6-ac52-6009a882288c",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Media": {
+          "Uri": "$.External.setAttributes.AudioS3Url0",
+          "SourceType": "S3",
+          "MediaType": "Audio"
+        }
+      },
+      "Identifier": "Play Neutral Message",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "1dabe2c7-b646-49c0-824c-293b8efbe742",
+        "Errors": [
+          {
+            "NextAction": "1dabe2c7-b646-49c0-824c-293b8efbe742",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}

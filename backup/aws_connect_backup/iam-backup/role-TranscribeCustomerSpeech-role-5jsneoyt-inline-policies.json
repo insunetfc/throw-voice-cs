@@ -1,0 +1,9 @@
+{
+    "PolicyNames": [
+        "AllowLexInTokyo",
+        "AllowLexRecognizeText",
+        "AllowTranscribe",
+        "LexCrossRegionAccess",
+        "TranscribePolicy"
+    ]
+}

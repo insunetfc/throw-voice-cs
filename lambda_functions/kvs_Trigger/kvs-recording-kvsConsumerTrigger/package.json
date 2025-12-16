@@ -1,0 +1,11 @@
+{
+  "name": "kvs-trigger",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "kvs_trigger.mjs",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.614.0",
+    "@aws-sdk/client-lambda": "^3.614.0",
+    "@aws-sdk/lib-dynamodb": "^3.614.0"
+  }
+}

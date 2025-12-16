@@ -1,0 +1,207 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "856dd865-e5a0-49c6-aacc-55fe53c38a22",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 20,
+      "y": 18.4
+    },
+    "ActionMetadata": {
+      "410057d0-9390-486b-bbb4-c4def2a7367c": {
+        "position": {
+          "x": 506.4,
+          "y": 325.6
+        }
+      },
+      "99458f47-6941-48ce-9b90-fdf184759b22": {
+        "position": {
+          "x": 788.8,
+          "y": 644.8
+        }
+      },
+      "856dd865-e5a0-49c6-aacc-55fe53c38a22": {
+        "position": {
+          "x": 185.6,
+          "y": 14.4
+        }
+      },
+      "d5bd7724-4436-4bfc-bd2a-d0bee26963a1": {
+        "position": {
+          "x": 430.4,
+          "y": 16
+        }
+      },
+      "3f9659a3-56a5-4f3c-a431-fd9da2306459": {
+        "position": {
+          "x": 354.4,
+          "y": 557.6
+        }
+      },
+      "07273109-a75a-4742-aaae-ce35603c31fc": {
+        "position": {
+          "x": 97.6,
+          "y": 868
+        }
+      },
+      "6728609a-9707-41f7-a87c-30ac1fde4f4c": {
+        "position": {
+          "x": 128.8,
+          "y": 213.6
+        },
+        "toCustomer": true,
+        "fromCustomer": true
+      },
+      "97a964a7-5dd2-4c82-b21f-173b209be8a7": {
+        "position": {
+          "x": 101.6,
+          "y": 609.6
+        },
+        "parameters": {
+          "LambdaFunctionARN": {
+            "displayName": "kvs-recording-kvsConsumerTrigger-grlpCK9dwpSD"
+          }
+        },
+        "dynamicMetadata": {}
+      },
+      "e7825b58-a9db-4935-9f83-e67a564176e8": {
+        "position": {
+          "x": 100.8,
+          "y": 424
+        },
+        "dynamicParams": []
+      }
+    },
+    "Annotations": [],
+    "name": "kvsStreamingFlow",
+    "description": "",
+    "type": "contactFlow",
+    "status": "PUBLISHED",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "Text": "An error occurred when we tried to start streaming."
+      },
+      "Identifier": "410057d0-9390-486b-bbb4-c4def2a7367c",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "99458f47-6941-48ce-9b90-fdf184759b22"
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "99458f47-6941-48ce-9b90-fdf184759b22",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "FlowLoggingBehavior": "Enabled"
+      },
+      "Identifier": "856dd865-e5a0-49c6-aacc-55fe53c38a22",
+      "Type": "UpdateFlowLoggingBehavior",
+      "Transitions": {
+        "NextAction": "d5bd7724-4436-4bfc-bd2a-d0bee26963a1"
+      }
+    },
+    {
+      "Parameters": {
+        "SSML": "<speak>\nThank you for using Amazon Connect IVR recording solution\n<break time=\"500ms\"/>\n</speak>"
+      },
+      "Identifier": "d5bd7724-4436-4bfc-bd2a-d0bee26963a1",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "6728609a-9707-41f7-a87c-30ac1fde4f4c"
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "An error occurred with the KVS trigger lambda function."
+      },
+      "Identifier": "3f9659a3-56a5-4f3c-a431-fd9da2306459",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "99458f47-6941-48ce-9b90-fdf184759b22"
+      }
+    },
+    {
+      "Parameters": {
+        "SSML": "<speak>\nThis is the sample flow to demonstrate customer audio streaming and recording in an Amazon Connect IVR. With this solution anything the customer says or any prompts to the customer will be recorded.\n<break time=\"1000ms\"/>\nTo demonstrate please tell me what city you are from?\n<break time=\"5000ms\"/>\nHow is the weather?\n<break time=\"5000ms\"/>\nThanks for using our solution goodbye.\n</speak>"
+      },
+      "Identifier": "07273109-a75a-4742-aaae-ce35603c31fc",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "99458f47-6941-48ce-9b90-fdf184759b22"
+      }
+    },
+    {
+      "Parameters": {
+        "MediaStreamingState": "Enabled",
+        "MediaStreamType": "Audio",
+        "Participants": [
+          {
+            "ParticipantType": "Customer",
+            "MediaDirections": [
+              "To",
+              "From"
+            ]
+          }
+        ]
+      },
+      "Identifier": "6728609a-9707-41f7-a87c-30ac1fde4f4c",
+      "Type": "UpdateContactMediaStreamingBehavior",
+      "Transitions": {
+        "NextAction": "e7825b58-a9db-4935-9f83-e67a564176e8",
+        "Errors": [
+          {
+            "NextAction": "410057d0-9390-486b-bbb4-c4def2a7367c",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LambdaFunctionARN": "arn:aws:lambda:ap-northeast-2:905418424724:function:kvs-recording-kvsConsumerTrigger-grlpCK9dwpSD",
+        "InvocationTimeLimitSeconds": "8",
+        "InvocationType": "SYNCHRONOUS",
+        "ResponseValidation": {
+          "ResponseType": "STRING_MAP"
+        }
+      },
+      "Identifier": "97a964a7-5dd2-4c82-b21f-173b209be8a7",
+      "Type": "InvokeLambdaFunction",
+      "Transitions": {
+        "NextAction": "07273109-a75a-4742-aaae-ce35603c31fc",
+        "Errors": [
+          {
+            "NextAction": "3f9659a3-56a5-4f3c-a431-fd9da2306459",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Attributes": {
+          "transcribeCall": "true",
+          "saveCallRecording": "true",
+          "languageCode": "ko-KR"
+        },
+        "TargetContact": "Current"
+      },
+      "Identifier": "e7825b58-a9db-4935-9f83-e67a564176e8",
+      "Type": "UpdateContactAttributes",
+      "Transitions": {
+        "NextAction": "97a964a7-5dd2-4c82-b21f-173b209be8a7",
+        "Errors": [
+          {
+            "NextAction": "97a964a7-5dd2-4c82-b21f-173b209be8a7",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}

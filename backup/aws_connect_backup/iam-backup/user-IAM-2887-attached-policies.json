@@ -1,0 +1,12 @@
+{
+    "AttachedPolicies": [
+        {
+            "PolicyName": "AmazonTranscribeFullAccess",
+            "PolicyArn": "arn:aws:iam::aws:policy/AmazonTranscribeFullAccess"
+        },
+        {
+            "PolicyName": "IAMUserChangePassword",
+            "PolicyArn": "arn:aws:iam::aws:policy/IAMUserChangePassword"
+        }
+    ]
+}

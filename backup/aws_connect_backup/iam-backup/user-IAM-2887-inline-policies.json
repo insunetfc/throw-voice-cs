@@ -1,0 +1,7 @@
+{
+    "PolicyNames": [
+        "AmazonConnectPromptAccess",
+        "S3UploadFromPartner",
+        "TranscribePolicy"
+    ]
+}
