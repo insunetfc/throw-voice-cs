@@ -1,0 +1,15 @@
+<include>
+  <gateway name="twilio-ipacl">
+    <!-- Twilio Elastic SIP Trunk termination host -->
+    <param name="proxy" value="sip:freeswitch-twilio.pstn.twilio.com;transport=udp"/>
+
+    <!-- We are using IP ACL on Twilio side, so no registration / auth -->
+    <param name="register" value="false"/>
+
+    <!-- Use your Twilio US number as caller ID -->
+    <param name="extension" value="+13854695434"/>
+    <param name="caller-id-in-from" value="true"/>
+    <param name="sip_cid_type" value="rpid"/>
+  </gateway>
+</include>
+
