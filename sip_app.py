@@ -11,11 +11,20 @@ Minimal SIP WebPhone server using FastAPI.
 Backend does NOT handle any SIP itself; it only serves the static HTML.
 """
 
-from fastapi import FastAPI
-from fastapi.responses import HTMLResponse, RedirectResponse, Response
+from fastapi import FastAPI, Depends, HTTPException, Request, status
+from fastapi.responses import HTMLResponse, RedirectResponse, Response, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-import uvicorn
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
+import os
+import re
+import secrets
+import string
+import subprocess
+from pathlib import Path
+import xml.etree.ElementTree as ET
+
+import uvicorn
 FAVICON_URL = "https://static.thenounproject.com/png/microphone-icon-1681031-512.png"
 _cached_icon: bytes | None = None
 
@@ -311,6 +320,34 @@ HTML_PAGE = """
       background: var(--card-bg-hover);
     }
 
+    .admin-link{
+      position: fixed;
+      top: 10px;
+      right: 12px;
+      z-index: 9999;
+
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 16px;
+      line-height: 1;
+
+      opacity: 0.25;
+      transition: opacity 120ms ease, transform 120ms ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .admin-link:hover{
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+
     .controls {
       display: flex;
       gap: 0.6rem;
@@ -355,9 +392,23 @@ HTML_PAGE = """
       border-top: 1px solid var(--divider);
       margin: 1rem 0;
     }
+  
+    /* Top nav */
+    .topnav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px);
+      background: rgba(2,6,23,0.65); border-bottom: 1px solid var(--border); }
+    .topnav-inner { max-width: 1100px; margin: 0 auto; padding: 10px 16px;
+      display: flex; align-items: center; gap: 12px; }
+    .brand { font-weight: 700; letter-spacing: 0.2px; margin-right: 10px; }
+    .tab { display: inline-block; padding: 8px 12px; border-radius: 10px; border: 1px solid transparent;
+      text-decoration: none; color: var(--text); }
+    .tab:hover { background: rgba(148,163,184,0.12); border-color: rgba(148,163,184,0.25); }
+    .tab.active { background: rgba(59,130,246,0.18); border-color: rgba(59,130,246,0.35); }
+
   </style>
 </head>
 <body data-theme="light">
+  <a class="admin-link" href="/sip/admin" title="내선 관리 / Extensions">⚙︎</a>
+
   <div class="top-bar">
     <div class="top-bar-left">
       <strong>SIP 웹폰 데모</strong>
@@ -434,7 +485,7 @@ HTML_PAGE = """
     <button data-key="9">9</button>
     <button data-key="*">*</button>
     <button data-key="0">0</button>
-    <button data-key="#">#</button>
+    <button data-key="backspace">⌫</button>
   </div>
 
   <div class="controls">
@@ -516,13 +567,20 @@ HTML_PAGE = """
       btn.addEventListener('click', () => {
         const val = btn.getAttribute('data-key');
         if (!val) return;
-        if (val === 'del') {
-          dialNumberEl.value = dialNumberEl.value.slice(0, -1);
+        if (val === 'backspace') {
+          backspace();
         } else {
           dialNumberEl.value += val;
         }
       });
     });
+
+
+    function backspace(){
+      dialNumberEl.value = dialNumberEl.value.slice(0, -1);
+      dialNumberEl.focus();
+    }
+
 
     // Register SIP extension
     registerBtn.addEventListener('click', () => {
@@ -679,23 +737,432 @@ HTML_PAGE = """
 </html>
 """
 
+# ----------------------------
+# FreeSWITCH Directory (static XML) Extension Manager
+# ----------------------------
+FS_CONF_DIR = os.environ.get("FS_CONF_DIR", "/usr/local/freeswitch/conf/vanilla")
+USERS_DIR = Path(os.environ.get("FS_USERS_DIR", str(Path(FS_CONF_DIR) / "directory" / "default")))
+FS_CLI = os.environ.get("FS_CLI", "/usr/local/freeswitch/bin/fs_cli")
+
+ADMIN_USERNAME = os.environ.get("SIP_ADMIN_USER", "admin")
+ADMIN_PASSWORD = os.environ.get("SIP_ADMIN_PASS")  # if unset/empty -> admin endpoints are open (dev mode)
+
+basic_security = HTTPBasic()
+
+
+def _require_admin(credentials: HTTPBasicCredentials = Depends(basic_security)):
+  """
+  Minimal protection for admin endpoints.
+  Set SIP_ADMIN_PASS to enable auth. Username defaults to 'admin' (SIP_ADMIN_USER).
+  """
+  if not ADMIN_PASSWORD:
+    return True
+
+  ok_user = secrets.compare_digest(credentials.username, ADMIN_USERNAME)
+  ok_pass = secrets.compare_digest(credentials.password, ADMIN_PASSWORD)
+  if not (ok_user and ok_pass):
+    raise HTTPException(
+      status_code=status.HTTP_401_UNAUTHORIZED,
+      detail="Unauthorized",
+      headers={"WWW-Authenticate": "Basic"},
+    )
+  return True
+
+
+def _rand_password(n: int = 14) -> str:
+  alphabet = string.ascii_letters + string.digits
+  return "".join(secrets.choice(alphabet) for _ in range(n))
+
+
+def _reloadxml() -> None:
+  # Keep it simple: rely on FS_CLI in PATH (or set FS_CLI to full path).
+  # Typical config reload for static directory users.
+  proc = subprocess.run([FS_CLI, "-x", "reloadxml"], capture_output=True, text=True)
+  if proc.returncode != 0:
+    raise RuntimeError(f"reloadxml failed: {proc.stderr.strip() or proc.stdout.strip()}")
+
+
+def _safe_ext(ext: str) -> str:
+  ext = (ext or "").strip()
+  if not re.fullmatch(r"\d{2,8}", ext):
+    raise HTTPException(status_code=400, detail="Extension must be 2-8 digits.")
+  return ext
+
+
+def _user_xml(ext: str, password: str, display_name: str | None = None, caller_id: str | None = None) -> str:
+  dn = (display_name or ext).strip()
+  cid = (caller_id or ext).strip()
+  # Minimal XML template consistent with FreeSWITCH directory/default/*.xml usage.
+  return f"""<include>
+  <user id="{ext}">
+    <params>
+      <param name="password" value="{password}"/>
+    </params>
+    <variables>
+      <variable name="user_context" value="default"/>
+      <variable name="effective_caller_id_name" value="{dn}"/>
+      <variable name="effective_caller_id_number" value="{cid}"/>
+    </variables>
+  </user>
+</include>
+"""
+
+
+def _parse_user_file(path: Path) -> dict:
+  # Best-effort parser; tolerates extra sections.
+  tree = ET.parse(path)
+  root = tree.getroot()
+
+  # Find <user id="...">
+  user = root.find(".//user")
+  user_id = user.attrib.get("id") if user is not None else path.stem
+
+  def _find_param(name: str) -> str | None:
+    el = root.find(f".//param[@name='{name}']")
+    return el.attrib.get("value") if el is not None else None
+
+  def _find_var(name: str) -> str | None:
+    el = root.find(f".//variable[@name='{name}']")
+    return el.attrib.get("value") if el is not None else None
+
+  mtime = path.stat().st_mtime
+  return {
+    "ext": str(user_id),
+    "has_password": _find_param("password") is not None or _find_param("a1-hash") is not None,
+    "caller_id_name": _find_var("effective_caller_id_name"),
+    "caller_id_number": _find_var("effective_caller_id_number"),
+    "user_context": _find_var("user_context"),
+    "path": str(path),
+    "mtime_epoch": mtime,
+  }
+
+
+ADMIN_PAGE = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Extension Manager</title>
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0;
+      background: #0b1020; color: #e2e8f0; }
+    .topnav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px);
+      background: rgba(2,6,23,0.65); border-bottom: 1px solid rgba(148,163,184,0.25); }
+    .topnav-inner { max-width: 1100px; margin: 0 auto; padding: 10px 16px;
+      display: flex; align-items: center; gap: 12px; }
+    .brand { font-weight: 700; letter-spacing: 0.2px; margin-right: 10px; }
+    .tab { display: inline-block; padding: 8px 12px; border-radius: 10px; border: 1px solid transparent;
+      text-decoration: none; color: #e2e8f0; }
+    .tab:hover { background: rgba(148,163,184,0.12); border-color: rgba(148,163,184,0.25); }
+    .tab.active { background: rgba(59,130,246,0.18); border-color: rgba(59,130,246,0.35); }
+
+    .wrap { max-width: 1100px; margin: 16px auto 40px; padding: 0 16px; }
+    .card { background: rgba(17,24,39,0.85); border: 1px solid rgba(148,163,184,0.20);
+      border-radius: 16px; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+    h1 { margin: 0 0 10px; font-size: 20px; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: end; }
+    label { font-size: 12px; color: rgba(226,232,240,0.8); display: block; margin-bottom: 6px; }
+    input { width: 220px; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(148,163,184,0.25);
+      background: rgba(2,6,23,0.6); color: #e2e8f0; outline: none; }
+    input::placeholder { color: rgba(226,232,240,0.45); }
+    button { padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(148,163,184,0.25);
+      background: rgba(59,130,246,0.18); color: #e2e8f0; cursor: pointer; }
+    button:hover { filter: brightness(1.08); }
+    .btn-danger { background: rgba(239,68,68,0.18); }
+    .btn-ghost { background: rgba(148,163,184,0.10); }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid rgba(148,163,184,0.15); font-size: 14px; }
+    th { color: rgba(226,232,240,0.8); font-weight: 600; }
+    .muted { color: rgba(226,232,240,0.65); font-size: 12px; }
+    .right { text-align: right; }
+    .pill { font-size: 12px; padding: 3px 8px; border-radius: 999px; border: 1px solid rgba(148,163,184,0.20);
+      background: rgba(148,163,184,0.10); display: inline-block; }
+    .note { margin-top: 10px; color: rgba(226,232,240,0.70); font-size: 12px; line-height: 1.4; }
+    code { background: rgba(148,163,184,0.12); padding: 2px 6px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <div class="topnav">
+    <div class="topnav-inner">
+      <div class="brand">SIP WebPhone</div>
+      <a class="tab" href="/sip">소프트폰 / Softphone</a>
+      <a class="tab active" href="/admin">내선 관리 / Extensions</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="card">
+      <h1>FreeSWITCH 내선 관리 (정적 XML) / FreeSWITCH Extensions (static XML)</h1>
+
+      <div class="row">
+        <div>
+          <label>내선번호 / Extension</label>
+          <input id="ext" placeholder="e.g., 1102" />
+        </div>
+        <div>
+          <label>표시 이름 (선택) / Display name (optional)</label>
+          <input id="dn" placeholder="e.g., Calling as 1102" />
+        </div>
+        <div>
+          <label>발신자 번호 (선택) / Caller ID number (optional)</label>
+          <input id="cid" placeholder="e.g., 1102" />
+        </div>
+        <div>
+          <label>비밀번호 (선택) / Password (optional)</label>
+          <input id="pw" placeholder="auto-generate if empty" />
+        </div>
+
+        <div>
+          <button onclick="createExt()">생성 / Create</button>
+          <button class="btn-ghost" onclick="refresh()">새로고침 / Refresh</button>
+        </div>
+      </div>
+
+      <div class="note">
+        Source directory: <code id="srcDir"></code><br/>
+        After every change, the server runs <code>fs_cli -x reloadxml</code>.
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Ext</th>
+            <th>Caller ID Name</th>
+            <th>Caller ID #</th>
+            <th>Has Auth</th>
+            <th class="right">동작 / Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr><td colspan="5" class="muted">Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<script>
+async function api(path, opts={}) {
+  const res = await fetch(path, Object.assign({headers: {"Content-Type":"application/json"}}, opts));
+  const text = await res.text();
+  let data = null;
+  try { data = text ? JSON.parse(text) : null; } catch(e) {}
+  if (!res.ok) {
+    const msg = (data && (data.detail || data.error)) ? (data.detail || data.error) : text || ("HTTP " + res.status);
+    throw new Error(msg);
+  }
+  return data;
+}
+
+function esc(s){ return (s ?? "").toString().replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;"); }
+
+async function refresh() {
+  const tbody = document.getElementById("tbody");
+  tbody.innerHTML = `<tr><td colspan="5" class="muted">Loading…</td></tr>`;
+  const data = await api("/admin/api/extensions");
+  document.getElementById("srcDir").textContent = data.source_dir;
+
+  if (!data.items.length) {
+    tbody.innerHTML = `<tr><td colspan="5" class="muted">No extensions found.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = data.items.map(u => {
+    const hasAuth = u.has_password ? `<span class="pill">yes</span>` : `<span class="pill">no</span>`;
+    return `
+      <tr>
+        <td><b>${esc(u.ext)}</b><div class="muted">${new Date(u.mtime_epoch*1000).toLocaleString()}</div></td>
+        <td>${esc(u.caller_id_name || "")}</td>
+        <td>${esc(u.caller_id_number || "")}</td>
+        <td>${hasAuth}</td>
+        <td class="right">
+          <button class="btn-ghost" onclick="resetPw('${esc(u.ext)}')">비밀번호 재설정 / Reset PW</button>
+          <button class="btn-danger" onclick="delExt('${esc(u.ext)}')">삭제 / Delete</button>
+        </td>
+      </tr>
+    `;
+  }).join("");
+}
+
+async function createExt() {
+  const ext = document.getElementById("ext").value.trim();
+  const display_name = document.getElementById("dn").value.trim();
+  const caller_id = document.getElementById("cid").value.trim();
+  const password = document.getElementById("pw").value;
+
+  const payload = {ext, display_name, caller_id, password};
+  const data = await api("/admin/api/extensions", {method:"POST", body: JSON.stringify(payload)});
+  alert(`Created extension ${data.ext}\nPassword: ${data.password}\n\n(Password is only shown once.)`);
+  document.getElementById("pw").value = "";
+  await refresh();
+}
+
+async function resetPw(ext) {
+  const pw = prompt(`새 비밀번호 설정 (${ext}) — 비워두면 랜덤 생성`, "");
+  const payload = pw && pw.trim() ? { password: pw.trim() } : {};
+
+  const data = await api(
+    `/sip/admin/api/extensions/${encodeURIComponent(ext)}/reset_password`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }
+  );
+
+  alert(`New password for ${ext}: ${data.password}`);
+  await refresh();
+}
+
+
+
+async function delExt(ext) {
+  if (!confirm(`내선 ${ext}을(를) 삭제할까요? XML 파일이 삭제됩니다.`)) return;
+  await api(`/admin/api/extensions/${encodeURIComponent(ext)}`, {method:"DELETE"});
+  await refresh();
+}
+
+refresh().catch(e => {
+  document.getElementById("tbody").innerHTML = `<tr><td colspan="5" class="muted">${esc(e.message)}</td></tr>`;
+});
+</script>
+</body>
+</html>
+"""
+
+
 @app.get("/favicon.ico")
 async def favicon():
-    global _cached_icon
-    if not _cached_icon:
-        # Either return 204 or redirect to the original URL
-        # return Response(status_code=204)
-        return RedirectResponse(FAVICON_URL)
-    return Response(_cached_icon, media_type="image/png")
+  # Keep favicon requests quiet (either redirect to hosted icon or serve generated png)
+  if _cached_icon is None:
+    return RedirectResponse(FAVICON_URL)
+  return Response(_cached_icon, media_type="image/png")
 
 
-@app.get("/", response_class=HTMLResponse)
-async def index():
+@app.get("/", include_in_schema=False)
+async def root():
+  return RedirectResponse("/sip")
+
+
+@app.get("/sip", response_class=HTMLResponse)
+async def sip_page():
   return HTML_PAGE
+
+
+@app.get("/admin", response_class=HTMLResponse)
+@app.get("/sip/admin", response_class=HTMLResponse)
+async def admin_page(_ok: bool = Depends(_require_admin)):
+  return ADMIN_PAGE
+
+
+@app.get("/admin/api/extensions")
+@app.get("/sip/admin/api/extensions")
+async def list_extensions(_ok: bool = Depends(_require_admin)):
+  try:
+    USERS_DIR.mkdir(parents=True, exist_ok=True)
+    items = []
+    for p in sorted(USERS_DIR.glob("*.xml")):
+      ext = p.stem
+      if not ext.isdigit():
+          continue
+      # Skip obvious non-user files if any
+      if p.name.lower().startswith("default"):
+        continue      
+      items.append(_parse_user_file(p))
+    # Sort numerically if possible
+    def _k(x):
+      try:
+        return int(x["ext"])
+      except Exception:
+        return 10**18
+    items.sort(key=_k)
+    return {"source_dir": str(USERS_DIR), "items": items}
+  except Exception as e:
+    return JSONResponse(status_code=500, content={"error": str(e)})
+
+
+@app.post("/admin/api/extensions")
+@app.post("/sip/admin/api/extensions")
+async def create_extension(req: Request, _ok: bool = Depends(_require_admin)):
+  try:
+    data = await req.json()
+  except Exception:
+    data = {}
+
+  ext = _safe_ext(str(data.get("ext", "")))
+  password = (data.get("password") or "").strip() or _rand_password()
+  display_name = (data.get("display_name") or "").strip() or None
+  caller_id = (data.get("caller_id") or "").strip() or None
+
+  user_file = USERS_DIR / f"{ext}.xml"
+  if user_file.exists():
+    raise HTTPException(status_code=409, detail=f"Extension {ext} already exists.")
+
+  USERS_DIR.mkdir(parents=True, exist_ok=True)
+  user_file.write_text(_user_xml(ext, password, display_name, caller_id), encoding="utf-8")
+
+  _reloadxml()
+  return {"ext": ext, "password": password}
+
+
+@app.post("/admin/api/extensions/{ext}/reset_password")
+@app.post("/sip/admin/api/extensions/{ext}/reset_password")
+async def reset_password(ext: str, req: Request, _ok: bool = Depends(_require_admin)):
+  ext = _safe_ext(ext)
+  if not ext.isdigit():
+    raise HTTPException(status_code=400, detail="Invalid extension id")
+
+  user_file = USERS_DIR / f"{ext}.xml"
+  if not user_file.exists():
+    raise HTTPException(status_code=404, detail=f"Extension {ext} not found.")
+
+  # Try to read optional JSON body: {"password": "..."}
+  body = {}
+  try:
+    body = await req.json()
+  except Exception:
+    body = {}
+
+  password = (body.get("password") or "").strip()
+  if not password:
+    password = _rand_password()
+
+  # (Optional) basic validation
+  if len(password) < 4:
+    raise HTTPException(status_code=400, detail="Password too short")
+  if any(ch.isspace() for ch in password):
+    raise HTTPException(status_code=400, detail="Password must not contain spaces")
+
+  # Keep existing display/caller-id if present
+  info = _parse_user_file(user_file)
+  display_name = info.get("caller_id_name") or ext
+  caller_id = info.get("caller_id_number") or ext
+
+  user_file.write_text(_user_xml(ext, password, display_name, caller_id), encoding="utf-8")
+  _reloadxml()
+  return {"ext": ext, "password": password}
+
+
+@app.delete("/admin/api/extensions/{ext}")
+@app.delete("/sip/admin/api/extensions/{ext}")
+async def delete_extension(ext: str, _ok: bool = Depends(_require_admin)):
+  ext = _safe_ext(ext)
+  if not ext.isdigit():
+    raise HTTPException(status_code=400, detail="Invalid extension id")
+  user_file = USERS_DIR / f"{ext}.xml"
+  if not user_file.exists():
+    raise HTTPException(status_code=404, detail=f"Extension {ext} not found.")
+  user_file.unlink()
+  _reloadxml()
+  return {"ok": True, "ext": ext}
+
 
 @app.get("/health", response_class=HTMLResponse)
 async def health():
   return "ok"
+
 
 if __name__ == "__main__":
   # Change port if you like (e.g., 8080)
